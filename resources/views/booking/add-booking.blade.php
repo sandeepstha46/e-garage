@@ -35,8 +35,10 @@
                         <div class="form-group">
                             <label>Booking Type</label>
                             <select class="form-control" id="sel2" name="sellist1">
-                                <option>Bike</option>
-                                <option>Car</option>
+                                <option value="1">Bike Service</option>
+                                <option value="2">Car Serivce</option>
+                                <option value="3">General Repair</option>
+                                <option value="4">Cleaning / Detailing</option>
                             </select>
                         </div>
                     </div>

@@ -1613,7 +1613,7 @@ html.menu-opened body{
 }
 
 .alert-danger > .mb-0{
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .inform_css > .back-to-profile{
@@ -1725,7 +1725,7 @@ html.menu-opened body{
     display:flex;
     justify-content:center;
     padding:40px;
-    width:400px
+    width:450px
 }
 .login-wrapper .loginbox .login-right .login-right-wrap{
     max-width:100%;

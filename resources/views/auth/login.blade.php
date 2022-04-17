@@ -20,7 +20,7 @@
         <div class="login-wrapper">
             <div class="container">
                 <div class="loginbox">
-                    <div class="login-left"><img class="img-fluid" src="{{ asset('images/hotel_logow.png') }}" alt="Logo" /></div>
+                    <div class="login-left"><a href="{{ url('/') }}"><img class="img-fluid" src="{{ asset('images/hotel_logow.png') }}" alt="Logo"></a></div>
                     <div class="login-right">
                         <div class="login-right-wrap">
                             <h1>Login</h1>

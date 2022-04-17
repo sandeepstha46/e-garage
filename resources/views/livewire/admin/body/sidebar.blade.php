@@ -4,14 +4,14 @@
             <ul>
                 @if (request()->is('admin/dashboard'))
                 <li class="active">
-                    <a href="">
+                    <a href="{{ route('admin.dashboard') }}">
                         <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 @else
                 <li>
-                    <a href="">
+                    <a href="{{ route('admin.dashboard') }}">
                         <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
@@ -20,9 +20,9 @@
                 <li class="list-divider"></li>
                 <li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span> Booking </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
-                        <li><a href="all-booking.html"> All Booking </a></li>
-                        <li><a href="edit-booking.html"> Edit Booking </a></li>
-                        <li><a href="add-booking.html"> Add Booking </a></li>
+                        <li><a href="{{ route('booking.view') }}"> All Booking </a></li>
+                        <li><a href="{{ route('booking.edit') }}"> Edit Booking </a></li>
+                        <li><a href="{{ route('booking.add') }}"> Add Booking </a></li>
                     </ul>
                 </li>
                 <li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Customers </span> <span class="menu-arrow"></span></a>

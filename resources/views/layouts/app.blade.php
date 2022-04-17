@@ -10,12 +10,18 @@
     <title>Admin Dashboard</title>
     @elseif(request()->is('admin/profile'))
     <title>Profile</title>
+    @elseif(request()->is('admin/profile/edit'))
+    <title>Profile Edit</title>
     @elseif(request()->is('user/profile'))
     <title>User Profile</title>
     @elseif(request()->is('user/profile/edit'))
     <title>Edit Profile</title>
     @elseif(request()->is('user/password/view'))
     <title>Edit Password</title>
+    @elseif(request()->is('booking/view'))
+    <title>View booking</title>
+    @elseif(request()->is('booking/add-booking'))
+    <title>Add booking</title>
     @else
     <title>Home</title>
     @endif
@@ -43,7 +49,7 @@
         @include('livewire.user.body.header')
         @include('livewire.user.body.sidebar')
         <div class="page-wrapper">
-            @include('user')
+            @yield('user')
         </div>
     </div>
     @endif

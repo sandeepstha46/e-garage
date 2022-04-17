@@ -1570,6 +1570,12 @@ html.menu-opened body{
     -o-transform:rotate(90deg);
     transform:rotate(90deg)
 }
+
+.subrop-booking{
+    background-color: #1B3975;
+    color: #fff !important;
+}
+
 .sidebar-menu ul ul a .menu-arrow{
     top:10px
 }

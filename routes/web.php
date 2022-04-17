@@ -24,7 +24,9 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
 });
-Route::get('/profile', [AdminController::class, 'ViewProfile'])->name('admin.profile');
+Route::get('/admin/profile', [AdminController::class, 'ViewProfile'])->name('admin.profile');
+Route::get('/admin/profile/edit', [AdminController::class, 'ProfileEdit'])->name('admin.profile.edit');
+Route::post('/admin/profile/store', [AdminController::class, 'ProfileStore'])->name('admin.profile.store');
 
 //For User
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {

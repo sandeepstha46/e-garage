@@ -1605,6 +1605,22 @@ html.menu-opened body{
     height:100vh;
     min-height:100vh
 }
+
+.alert-danger > .mb-0{
+    font-size: 13px;
+}
+
+.inform_css > .back-to-profile{
+    text-align: end;
+    font-size: 16px;
+    padding-right: 10px;
+}
+
+.back{
+    color: #1B3975;
+    font-weight: 500;
+}
+
 .page-wrapper{
     margin-left:265px;
     padding-top:100px;

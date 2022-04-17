@@ -7,7 +7,7 @@
         <h3 class="page-title">Profile</h3>
         <ul class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="">Dashboard</a>
+            <a href="{{ route('admin.dashboard') }}">Dashboard</a>
           </li>
           <li class="breadcrumb-item active">Profile</li>
         </ul>
@@ -20,18 +20,18 @@
         <div class="row align-items-center">
           <div class="col-auto profile-image">
             <a href="#">
-              <img class="rounded-circle" alt="User Image" src="">
+              <img class="rounded-circle" alt="User Image" src="{{ (!empty($user->profile_photo_path))? url('images/upload_images/admin_images/'.$user->profile_photo_path): url('images/upload_images/no_avatar.png') }}">
             </a>
           </div>
           <div class="col ml-md-n2 profile-user-info">
-            <h4 class="user-name mb-3"></h4>
-            <h6 class="text-muted mt-1"></h6>
+            <h4 class="user-name mb-3">{{ $user->name }}</h4>
+            <h6 class="text-muted mt-1">{{ $user->email }}</h6>
             <div class="user-Location mt-1">Florida, United States</div>
             <div class="about-text">Here</div>
             <div class="about-text">Here</div>
           </div>
           <div class="col-auto profile-btn">
-            <a href="" class="btn btn-primary"> Edit Profile </a>
+            <a href="{{ route('admin.profile.edit') }}" class="btn btn-primary"> Edit Profile </a>
             <a href="" class="btn btn-primary"> Edit Password </a>
           </div>
         </div>

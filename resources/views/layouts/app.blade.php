@@ -8,6 +8,8 @@
     <title>User Dashboard</title>
     @elseif(request()->is('admin/dashboard'))
     <title>Admin Dashboard</title>
+    @elseif(request()->is('admin/profile'))
+    <title>Profile</title>
     @elseif(request()->is('user/profile'))
     <title>User Profile</title>
     @elseif(request()->is('user/profile/edit'))

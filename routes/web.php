@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
 });
+Route::get('/profile', [AdminController::class, 'ViewProfile'])->name('admin.profile');
 
 //For User
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     @if (request()->is('user/dashboard'))
     <title>User Dashboard</title>
+    @elseif(request()->is('admin/dashboard'))
+    <title>Admin Dashboard</title>
     @elseif(request()->is('user/profile'))
     <title>User Profile</title>
     @elseif(request()->is('user/profile/edit'))
@@ -31,15 +33,15 @@
         @include('livewire.admin.body.header')
         @include('livewire.admin.body.sidebar')
         <div class="page-wrapper">
-            @include('livewire.admin.admin_dashboard')
+            @yield('admin')
         </div>
-    </div>
+    </div>z
     @else
     <div class="main-wrapper">
         @include('livewire.user.body.header')
         @include('livewire.user.body.sidebar')
         <div class="page-wrapper">
-            @include('livewire.user.user_dashboard')
+            @include('user')
         </div>
     </div>
     @endif

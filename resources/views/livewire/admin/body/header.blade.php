@@ -22,7 +22,7 @@
                 </span>
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="">My Profile</a>
+                <a class="dropdown-item" href="{{ route('admin.profile') }}">My Profile</a>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 <form id="logout-form" method="POST" action="{{ route('logout') }}">
                     @csrf

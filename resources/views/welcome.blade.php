@@ -19,17 +19,35 @@
                 <ul class="top-head-row">
                     <li>Available: 10 am - 5 pm</li>
                     <li>+977 980 0052623</li>
-                    @if (Route::has('login'))
+                    @if(Route::has('login'))
                     @auth
-                    <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                    @if(Auth::user()->utype === 'ADM')
+                    <li class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">{{Auth::user()->name}}</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                            <form id="logout-form" method="POST" action="{{ route('logout') }}">
+                                @csrf
+                            </form>
+                        </ul>
+                    </li>
                     @else
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    @if (Route::has('register'))
-                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">{{Auth::user()->name}}</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="{{ route('user.dashboard') }}">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                            <form id="logout-form" method="POST" action="{{ route('logout') }}">
+                                @csrf
+                            </form>
+                        </ul>
+                    </li>
                     @endif
-                    @endauth
+                    @else
+                    <li><a href="{{route('login')}}">Login</a> / <a href="{{route('register')}}">Register</a></li>
                     @endif
-                </ul>
+                    @endif
             </div>
         </div>
         <hr />

@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('user')
+@extends('booking.booking_master')
+@section('booking')
 
 <div class="content container-fluid">
     <div class="page-header">

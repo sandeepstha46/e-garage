@@ -43,7 +43,7 @@
         <div class="page-wrapper">
             @yield('admin')
         </div>
-    </div>z
+    </div>
     @else
     <div class="main-wrapper">
         @include('livewire.user.body.header')

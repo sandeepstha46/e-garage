@@ -39,9 +39,11 @@ Route::get('/user/profile/edit', [UserController::class, 'ProfileEdit'])->name('
 Route::post('/user/profile/store', [UserController::class, 'ProfileStore'])->name('user.profile.store');
 
 //For Booking
-Route::get('/booking/view', [BookingController::class, 'ViewBooking'])->name('booking.view');
-Route::get('/booking/add-booking', [BookingController::class, 'AddBooking'])->name('booking.add');
-Route::get('/booking/edit-booking', [BookingController::class, 'EditBooking'])->name('booking.edit');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/booking/view', [BookingController::class, 'ViewBooking'])->name('booking.view');
+    Route::get('/booking/add-booking', [BookingController::class, 'AddBooking'])->name('booking.add');
+    Route::get('/booking/edit-booking', [BookingController::class, 'EditBooking'])->name('booking.edit');
+});
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', function () {

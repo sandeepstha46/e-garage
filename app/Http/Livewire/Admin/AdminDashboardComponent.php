@@ -3,11 +3,14 @@
 namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
+use App\Models\Bookings;
+use Illuminate\Http\Request;
 
 class AdminDashboardComponent extends Component
 {
-    public function render()
+    public function render(Request $request)
     {
-        return view('livewire.admin.admin_dashboard');
+        $data = Bookings::orderBy('id')->get();
+        return view('livewire.admin.admin_dashboard', compact('data'));
     }
 }

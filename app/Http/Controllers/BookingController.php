@@ -9,7 +9,7 @@ class BookingController extends Controller
 {
     public function ViewBooking(Request $request)
     {
-        $data = Bookings::orderBy('id');
+        $data = Bookings::orderBy('id')->get();
         return view('booking.view-booking', compact('data'));
     }
 

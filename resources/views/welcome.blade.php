@@ -75,12 +75,6 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Appointment</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item" href="/">Schedule Appointment</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <li><a class="dropdown-item" href="">Car / Bike Servicing</a></li>
@@ -266,7 +260,7 @@
                         <div class="rs-counter-list">
                             <i class="fa fa-user fa-4x" aria-hidden="true"></i>
                             <h6 class="rs-counter">Expert</h6>
-                            <h6>Assistance on 18001031045</h6>
+                            <h6>Assistance on Call</h6>
                         </div>
                     </div>
 

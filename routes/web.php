@@ -22,6 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 //For Admin
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
@@ -46,8 +47,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/booking/edit-booking', [BookingController::class, 'EditBooking'])->name('booking.edit');
 });
 
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+// Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });

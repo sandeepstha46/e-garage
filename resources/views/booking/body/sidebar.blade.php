@@ -228,26 +228,6 @@
                     </ul>
                 </li>
                 @endif
-                <li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Customers </span> <span class="menu-arrow"></span></a>
-                    <ul class="submenu_class" style="display: none;">
-                        <li><a href="all-customer.html"> All customers </a></li>
-                        <li><a href="edit-customer.html"> Edit Customer </a></li>
-                        <li><a href="add-customer.html"> Add Customer </a></li>
-                    </ul>
-                </li>
-                <li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Staff </span> <span class="menu-arrow"></span></a>
-                    <ul class="submenu_class" style="display: none;">
-                        <li><a href="all-staff.html">All Staff </a></li>
-                        <li><a href="edit-staff.html"> Edit Staff </a></li>
-                        <li><a href="add-staff.html"> Add Staff </a></li>
-                    </ul>
-                </li>
-                <li class="submenu"> <a href="#"><i class="far fa-money-bill-alt"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
-                    <ul class="submenu_class" style="display: none;">
-                        <li><a href="invoices.html">Invoices </a></li>
-                        <li><a href="payments.html">Payments </a></li>
-                    </ul>
-                </li>
                 <li> <a href="calendar.html"><i class="fas fa-calendar-alt"></i> <span>Calendar</span></a> </li>
                 <li class="submenu"> <a href="#"><i class="fe fe-table"></i> <span> Blog </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
@@ -257,6 +237,13 @@
                         <li><a href="edit-blog.html">Edit Blog </a></li>
                     </ul>
                 </li>
+                <li class="submenu"> <a href="#"><i class="far fa-money-bill-alt"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
+                    <ul class="submenu_class" style="display: none;">
+                        <li><a href="invoices.html">Invoices </a></li>
+                        <li><a href="payments.html">Payments </a></li>
+                    </ul>
+                </li>
+                
                 <li class="submenu"> <a href="#"><i class="fe fe-table"></i> <span> Reports </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
                         <li><a href="expense-reports.html">Expense Report </a></li>

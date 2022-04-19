@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    public function ViewBooking()
+    public function ViewBooking(Request $request)
     {
         $data = Bookings::orderBy('id');
         return view('booking.view-booking', compact('data'));

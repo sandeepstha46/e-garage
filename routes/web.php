@@ -42,6 +42,7 @@ Route::post('/user/profile/store', [UserController::class, 'ProfileStore'])->nam
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/booking/view', [BookingController::class, 'ViewBooking'])->name('booking.view');
     Route::get('/booking/add-booking', [BookingController::class, 'AddBooking'])->name('booking.add');
+    Route::post('/booking/add-booking', [BookingController::class, 'AddNewBooking'])->name('booking.add');
     Route::get('/booking/edit-booking', [BookingController::class, 'EditBooking'])->name('booking.edit');
 });
 

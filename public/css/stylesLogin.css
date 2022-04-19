@@ -10,6 +10,16 @@ body{
     line-height:1.5;
     overflow-x:hidden
 }
+#mess-age{
+    display: flex;
+    justify-content: end;
+}
+#mess-age > .alert{
+    margin-bottom: 0px;
+    box-shadow: 10px 12px 19px -14px rgba(0,0,0,0.56);
+    -webkit-box-shadow: 10px 12px 19px -14px rgba(0,0,0,0.56);
+    -moz-box-shadow: 10px 12px 19px -14px rgba(0,0,0,0.56);
+}
 h1,h2,h3,h4,h5,h6{
     margin-top:0
 }

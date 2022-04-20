@@ -22,6 +22,7 @@ class ProductsTable extends Migration
             $table->integer('car_year');
             $table->string('req_part');
             $table->string('textarea');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

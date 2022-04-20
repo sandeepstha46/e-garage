@@ -10,7 +10,7 @@ class BookingController extends Controller
 {
     public function ViewBooking(Request $request)
     {
-        $data = Bookings::orderBy('id', 'asc')->get();
+        $data = Bookings::orderBy('id', 'asc')->where('status', 1)->get();
         return view('booking.view-booking', compact('data'));
     }
 
@@ -64,10 +64,12 @@ class BookingController extends Controller
     public function DeleteBooking($id)
     {
         $data = Bookings::findOrFail($id);
+        $data->status = 3;
         $result = $data->save();
 
+        $data = Bookings::orderBy('id', 'asc')->where('status', 1)->get();
         if ($result) {
-            return view('booking/view-booking', compact('data'))->with('success', 'Booking Deleted Successfully');
+            return redirect('booking/view')->with('success', 'Booking Deleted Successfully');
         } else {
             return redirect('booking/edit-booking')->with('errors', ' Sorry Some Error Occured');
         }

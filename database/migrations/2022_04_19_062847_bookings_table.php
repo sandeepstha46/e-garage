@@ -22,6 +22,7 @@ class BookingsTable extends Migration
             $table->integer('p_number');
             $table->integer('v_number');
             $table->string('textarea');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

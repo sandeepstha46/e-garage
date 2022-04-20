@@ -8,6 +8,7 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+
     public function ViewProfile()
     {
         $id = Auth::user()->id;

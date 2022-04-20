@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function ViewProduct(Request $request)
     {
-        $data = Products::orderBy('id', 'asc')->get();
+        $data = Products::orderBy('id', 'asc')->where('status', 1)->get();
         return view('product.view-product', compact('data'));
     }
 
@@ -62,11 +62,13 @@ class ProductController extends Controller
 
     public function DeleteProduct($id)
     {
-        $product = Products::findOrfail($id)->get();
+        $product = Products::findOrfail($id);
+        $product->status = 3;
         $result = $product->save();
 
+        $data = Products::orderBy('id', 'asc')->where('status', 1)->get();
         if ($result) {
-            return view('product/view', compact('data'))->with('success', 'BProduct Deleted Successfully');
+            return redirect('product/view')->with('success', 'Product Deleted Successfully');
         } else {
             return redirect('product/edit-product')->with('errors', ' Sorry Some Error Occured');
         }

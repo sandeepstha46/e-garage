@@ -57,9 +57,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 });
 
 //For Product
-Route::get('/product/view', [ProductController::class, 'ViewProduct'])->name('product.view');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/product/view', [ProductController::class, 'ViewProduct'])->name('product.view');
     Route::get('/product/add-product', [ProductController::class, 'AddProduct'])->name('product.add');
     Route::post('/product/add-product', [ProductController::class, 'AddNewProduct'])->name('product.add');
     Route::get('/product/edit-product/{id}', [ProductController::class, 'EditProduct'])->name('product.edit');

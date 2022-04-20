@@ -20,7 +20,7 @@
         <li class="nav-item dropdown has-arrow">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                 <span class="user-img">
-                    <i class="fas fa-user" style="font-size: 20px;color: #1B3975;"></i>
+                    <i class="fas fa-user" style="font-size: 20px;color: #1B3975;"></i>{{Auth::user()->name}}
                 </span>
             </a>
             <div class="dropdown-menu">

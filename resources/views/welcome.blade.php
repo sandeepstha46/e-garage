@@ -77,9 +77,9 @@
                         <li class="dropdown">
                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item" href="">Car / Bike Servicing</a></li>
-                                <li><a class="dropdown-item" href="">General Repair</a></li>
-                                <li><a class="dropdown-item" href="">Cleaning / Detailing</a></li>
+                                <li><a class="dropdown-item" href="{{ route('booking.add') }}">Car / Bike Servicing</a></li>
+                                <li><a class="dropdown-item" href="{{ route('booking.add') }}">General Repair</a></li>
+                                <li><a class="dropdown-item" href="{{ route('booking.add') }}">Cleaning / Detailing</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -95,9 +95,10 @@
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
+                    <div class="carousel-item">
                         <img src="{{ asset('images/1.png') }}" class="d-block w-100" alt="..." />
                     </div>
                     <div class="carousel-item">
@@ -105,6 +106,9 @@
                     </div>
                     <div class="carousel-item">
                         <img src="{{ asset('images/3.png') }}" class="d-block w-100" alt="..." />
+                    </div>
+                    <div class="carousel-item active">
+                        <img src="{{ asset('images/4.png') }}" class="d-block w-100" alt="..." />
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -124,7 +128,9 @@
             <div class="row third-row">
                 <h2>OUR SERVICES</h2>
             </div>
-            <div class="cont-2-div"></div>
+            <div class="cont-2-div">
+                <img src="{{ asset('images/line.png') }}" height="24" />
+            </div>
             <div class="row fourth-row">
                 <div class="col-md-6">
                     <div class="row inner-fouth">
@@ -185,7 +191,9 @@
             <div class="row fifth-row">
                 <h2>AVAILABLE AT</h2>
             </div>
-            <div class="cont-2-div"></div>
+            <div class="cont-2-div">
+                <img src="{{ asset('images/line.png') }}" height="24" />
+            </div>
             <div class="image-list">
                 <ul class="inner-fifth">
                     <li class="img-text">
@@ -213,7 +221,7 @@
                         </div>
                     </li>
                     <li class="img-text">
-                        <img src="{{ asset('images/hetauda.png') }}" class="img-fluid rounded" alt="..." />
+                        <img src="{{ asset('images/itahari.png') }}" class="img-fluid rounded" alt="..." />
                         <div class="overlay">
                             <div class="text text-center">Ithari</div>
                         </div>
@@ -228,14 +236,16 @@
             <div class="row fifth-row">
                 <h2>Why Us?</h2>
             </div>
-            <div class="cont-2-div"></div>
+            <div class="cont-2-div">
+                <img src="{{ asset('images/line.png') }}" height="24" />
+            </div>
             <div class="container">
                 <div class="row rs-count" style="padding-top: 60px">
                     <!-- COUNTER-LIST START -->
                     <div class="col-md-2 col-sm-6 wow fadeInUp" style="text-align: center">
                         <div class="rs-counter-list">
                             <i class="fa fa-car fa-4x" aria-hidden="true"></i>
-                            <h6 class="rs-counter">Free</h6>
+                            <h6 class="rs-counter" id="count-er">Free</h6>
                             <h6>Pick &amp; Drop</h6>
                         </div>
                     </div>
@@ -291,7 +301,9 @@
             <div class="row sixth-row">
                 <h2>TESTIMONALS</h2>
             </div>
-            <div class="cont-2-div"></div>
+            <div class="cont-2-div">
+                <img src="{{ asset('images/line.png') }}" height="24" />
+            </div>
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active text-center">

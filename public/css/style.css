@@ -39,6 +39,11 @@ body
     color: #1B3975;
 }
 
+.rs-counter-list > .rs-counter{
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
 .logo
 {
     width: 80px;
@@ -99,8 +104,9 @@ hr
 
 .cont-2-div 
 {
-    background: url('line.png') no-repeat center bottom;
     height: 24px;
+    display: flex;
+    justify-content: center;
 }
 
 .image-list

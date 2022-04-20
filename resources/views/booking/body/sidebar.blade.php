@@ -32,9 +32,6 @@
                             <a href="{{ route('booking.view') }}"> All Booking </a>
                         </li>
                         <li>
-                            <a href="{{ route('booking.edit') }}"> Edit Booking </a>
-                        </li>
-                        <li>
                             <a href="{{ route('booking.add') }}"> Add Booking </a>
                         </li>
                     </ul>
@@ -49,9 +46,6 @@
                     <ul class="submenu_class" style="display: none;">
                         <li>
                             <a href="{{ route('booking.view') }}"> All Booking </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('booking.edit') }}"> Edit Booking </a>
                         </li>
                         <li>
                             <a href="{{ route('booking.add') }}"> Add Booking </a>
@@ -70,9 +64,6 @@
                             <a href="{{ route('booking.view') }}"> All Booking </a>
                         </li>
                         <li>
-                            <a href="{{ route('booking.edit') }}"> Edit Booking </a>
-                        </li>
-                        <li>
                             <a href="{{ route('booking.add') }}"> Add Booking </a>
                         </li>
                     </ul>
@@ -89,9 +80,6 @@
                             <a href="{{ route('booking.view') }}"> All Booking </a>
                         </li>
                         <li>
-                            <a href="{{ route('booking.edit') }}"> Edit Booking </a>
-                        </li>
-                        <li>
                             <a href="{{ route('booking.add') }}"> Add Booking </a>
                         </li>
                     </ul>
@@ -104,32 +92,10 @@
                         <li><a href="add-customer.html"> Add Customer </a></li>
                     </ul>
                 </li>
-                <li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Staff </span> <span class="menu-arrow"></span></a>
+                <li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Products </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
-                        <li><a href="all-staff.html">All Staff </a></li>
-                        <li><a href="edit-staff.html"> Edit Staff </a></li>
-                        <li><a href="add-staff.html"> Add Staff </a></li>
-                    </ul>
-                </li>
-                <li class="submenu"> <a href="#"><i class="far fa-money-bill-alt"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
-                    <ul class="submenu_class" style="display: none;">
-                        <li><a href="invoices.html">Invoices </a></li>
-                        <li><a href="payments.html">Payments </a></li>
-                    </ul>
-                </li>
-                <li> <a href="calendar.html"><i class="fas fa-calendar-alt"></i> <span>Calendar</span></a> </li>
-                <li class="submenu"> <a href="#"><i class="fe fe-table"></i> <span> Blog </span> <span class="menu-arrow"></span></a>
-                    <ul class="submenu_class" style="display: none;">
-                        <li><a href="blog.html">Blog </a></li>
-                        <li><a href="blog-details.html">Blog Veiw </a></li>
-                        <li><a href="add-blog.html">Add Blog </a></li>
-                        <li><a href="edit-blog.html">Edit Blog </a></li>
-                    </ul>
-                </li>
-                <li class="submenu"> <a href="#"><i class="fe fe-table"></i> <span> Reports </span> <span class="menu-arrow"></span></a>
-                    <ul class="submenu_class" style="display: none;">
-                        <li><a href="expense-reports.html">Expense Report </a></li>
-                        <li><a href="invoice-reports.html">Invoice Report </a></li>
+                        <li><a href="all-staff.html">All Products </a></li>
+                        <li><a href="add-staff.html"> Add Products </a></li>
                     </ul>
                 </li>
             </ul>
@@ -163,9 +129,6 @@
                             <a href="{{ route('booking.view') }}"> All Booking </a>
                         </li>
                         <li>
-                            <a href="{{ route('booking.edit') }}"> Edit Booking </a>
-                        </li>
-                        <li>
                             <a href="{{ route('booking.add') }}"> Add Booking </a>
                         </li>
                     </ul>
@@ -180,9 +143,6 @@
                     <ul class="submenu_class" style="display: none;">
                         <li>
                             <a href="{{ route('booking.view') }}"> All Booking </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('booking.edit') }}"> Edit Booking </a>
                         </li>
                         <li>
                             <a href="{{ route('booking.add') }}"> Add Booking </a>
@@ -201,9 +161,6 @@
                             <a href="{{ route('booking.view') }}"> All Booking </a>
                         </li>
                         <li>
-                            <a href="{{ route('booking.edit') }}"> Edit Booking </a>
-                        </li>
-                        <li>
                             <a href="{{ route('booking.add') }}"> Add Booking </a>
                         </li>
                     </ul>
@@ -220,34 +177,15 @@
                             <a href="{{ route('booking.view') }}"> All Booking </a>
                         </li>
                         <li>
-                            <a href="{{ route('booking.edit') }}"> Edit Booking </a>
-                        </li>
-                        <li>
                             <a href="{{ route('booking.add') }}"> Add Booking </a>
                         </li>
                     </ul>
                 </li>
                 @endif
-                <li> <a href="calendar.html"><i class="fas fa-calendar-alt"></i> <span>Calendar</span></a> </li>
-                <li class="submenu"> <a href="#"><i class="fe fe-table"></i> <span> Blog </span> <span class="menu-arrow"></span></a>
+                <li class="submenu"> <a href="#"><i class="fab fa-product-hunt"></i> <span> Products </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
-                        <li><a href="blog.html">Blog </a></li>
-                        <li><a href="blog-details.html">Blog Veiw </a></li>
-                        <li><a href="add-blog.html">Add Blog </a></li>
-                        <li><a href="edit-blog.html">Edit Blog </a></li>
-                    </ul>
-                </li>
-                <li class="submenu"> <a href="#"><i class="far fa-money-bill-alt"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
-                    <ul class="submenu_class" style="display: none;">
-                        <li><a href="invoices.html">Invoices </a></li>
-                        <li><a href="payments.html">Payments </a></li>
-                    </ul>
-                </li>
-                
-                <li class="submenu"> <a href="#"><i class="fe fe-table"></i> <span> Reports </span> <span class="menu-arrow"></span></a>
-                    <ul class="submenu_class" style="display: none;">
-                        <li><a href="expense-reports.html">Expense Report </a></li>
-                        <li><a href="invoice-reports.html">Invoice Report </a></li>
+                        <li><a href="invoices.html">All Products</a></li>
+                        <li><a href="payments.html">Request Products</a></li>
                     </ul>
                 </li>
             </ul>

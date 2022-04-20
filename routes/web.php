@@ -44,11 +44,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/booking/view', [BookingController::class, 'ViewBooking'])->name('booking.view');
     Route::get('/booking/add-booking', [BookingController::class, 'AddBooking'])->name('booking.add');
     Route::post('/booking/add-booking', [BookingController::class, 'AddNewBooking'])->name('booking.add');
-    Route::get('/booking/edit-booking', [BookingController::class, 'EditBooking'])->name('booking.edit');
+    Route::get('/booking/edit-booking/{id}', [BookingController::class, 'EditBooking'])->name('booking.edit');
+    Route::post('/booking/edit-booking/{id}', [BookingController::class, 'UpdateBooking'])->name('booking.edit');
+    Route::post('/booking/delete/{id}', [BookingController::class, 'DeleteBooking'])->name('booking.delete.');
 });
-
-// Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });

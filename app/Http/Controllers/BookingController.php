@@ -63,12 +63,11 @@ class BookingController extends Controller
 
     public function DeleteBooking($id)
     {
-        $booking = User::findOrFail($id);
-        $result = $booking->save();
-        $data = User::orderBy('id', 'asc')->get();
+        $data = Bookings::findOrFail($id);
+        $result = $data->save();
 
         if ($result) {
-            return view('booking/view', compact('data'))->with('success', 'Booking Deleted Successfully');
+            return view('booking/view-booking', compact('data'))->with('success', 'Booking Deleted Successfully');
         } else {
             return redirect('booking/edit-booking')->with('errors', ' Sorry Some Error Occured');
         }

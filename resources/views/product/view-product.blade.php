@@ -18,7 +18,7 @@
             <div class="col">
                 <div class="mt-5">
                     <h4 class="card-title float-left mt-2">All Products</h4>
-                    <a href="{{ route('booking.add') }}" class="btn btn-primary float-right veiwbutton ">Add Product</a>
+                    <a href="{{ route('product.add') }}" class="btn btn-primary float-right veiwbutton ">Add Product</a>
                 </div>
             </div>
         </div>
@@ -62,9 +62,9 @@
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v ellipse_color"></i>
                                             </a>
-                                            <form method="post" action="">
+                                            <form method="post" action="{{ url('product/delete/'.$product->id) }}">
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="">
+                                                    <a class="dropdown-item" href="{{ url('product/edit-product/'.$product->id) }}">
                                                         <i class="fas fa-pencil-alt m-r-5"></i> Edit </a>
                                                     @csrf
                                                     <button class="dropdown-item" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete </button>

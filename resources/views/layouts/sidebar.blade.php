@@ -97,6 +97,7 @@
                     <ul class="submenu_class" style="display: none;">
                         <li><a href="{{ route('product.view') }}">All Products </a></li>
                         <li><a href="{{ route('product.add') }}"> Add Products </a></li>
+                        <li><a href=""> Requested Products </a></li>
                     </ul>
                 </li>
                 @elseif (request()->is('product/add'))
@@ -104,6 +105,7 @@
                     <ul class="submenu_class" style="display: none;">
                         <li><a href="{{ route('product.view') }}">All Products </a></li>
                         <li><a href="{{ route('product.add') }}"> Add Products </a></li>
+                        <li><a href=""> Requested Products </a></li>
                     </ul>
                 </li>
                 @else
@@ -111,6 +113,7 @@
                     <ul class="submenu_class" style="display: none;">
                         <li><a href="{{ route('product.view') }}">All Products </a></li>
                         <li><a href="{{ route('product.add') }}"> Add Products </a></li>
+                        <li><a href=""> Requested Products </a></li>
                     </ul>
                 </li>
                 @endif
@@ -200,7 +203,6 @@
                 @endif
                 <li class="submenu"> <a href="#"><i class="fab fa-product-hunt"></i> <span> Products </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
-                        <li><a href="invoices.html">All Products</a></li>
                         <li><a href="payments.html">Request Products</a></li>
                     </ul>
                 </li>

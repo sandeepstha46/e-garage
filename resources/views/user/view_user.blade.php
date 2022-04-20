@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('user')
+@section('body')
 
 <div class="content container-fluid">
     <div class="page-header mt-5">

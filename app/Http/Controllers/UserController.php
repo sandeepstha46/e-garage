@@ -12,14 +12,14 @@ class UserController extends Controller
     {
         $id = Auth::user()->id;
         $user = User::find($id);
-        return view('livewire.user.profile.view_user', compact('user'));
-        // return view('livewire.user.profile.view_user');
+        return view('user.view_user', compact('user'));
+        // return view('user.view_user');
     }
     public function ProfileEdit()
     {
         $id = Auth::user()->id;
         $editData = User::find($id);
-        return view('livewire.user.profile.edit_user', compact('editData'));
+        return view('user.edit_user', compact('editData'));
     }
 
     public function ProfileStore(Request $request)

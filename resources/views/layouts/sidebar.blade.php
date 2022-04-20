@@ -92,12 +92,28 @@
                         <li><a href="add-customer.html"> Add Customer </a></li>
                     </ul>
                 </li>
-                <li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Products </span> <span class="menu-arrow"></span></a>
+                @if (request()->is('product/view'))
+                <li class="submenu"> <a class="subrop-booking"><i class="fas fa-user"></i> <span> Products </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
-                        <li><a href="all-staff.html">All Products </a></li>
-                        <li><a href="add-staff.html"> Add Products </a></li>
+                        <li><a href="{{ route('product.view') }}">All Products </a></li>
+                        <li><a href="{{ route('product.add') }}"> Add Products </a></li>
                     </ul>
                 </li>
+                @elseif (request()->is('product/add'))
+                <li class="submenu"> <a class="subrop-booking"><i class="fas fa-user"></i> <span> Products </span> <span class="menu-arrow"></span></a>
+                    <ul class="submenu_class" style="display: none;">
+                        <li><a href="{{ route('product.view') }}">All Products </a></li>
+                        <li><a href="{{ route('product.add') }}"> Add Products </a></li>
+                    </ul>
+                </li>
+                @else
+                <li class="submenu"> <a href=""><i class="fas fa-user"></i> <span> Products </span> <span class="menu-arrow"></span></a>
+                    <ul class="submenu_class" style="display: none;">
+                        <li><a href="{{ route('product.view') }}">All Products </a></li>
+                        <li><a href="{{ route('product.add') }}"> Add Products </a></li>
+                    </ul>
+                </li>
+                @endif
             </ul>
             @else
             <ul>

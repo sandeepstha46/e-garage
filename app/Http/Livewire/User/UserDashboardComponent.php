@@ -11,6 +11,6 @@ class UserDashboardComponent extends Component
     public function render(Request $request)
     {
         $data = Bookings::orderBy('id')->get();
-        return view('livewire.user.user_dashboard', compact('data'));
+        return view('dashboard', compact('data'));
     }
 }

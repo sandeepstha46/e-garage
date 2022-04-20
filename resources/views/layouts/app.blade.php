@@ -36,23 +36,13 @@
 
 <body onload="dateGreet()">
     @auth
-    @if(Auth::user()->utype === 'ADM')
     <div class="main-wrapper">
-        @include('livewire.admin.body.header')
-        @include('livewire.admin.body.sidebar')
+        @include('layouts.header')
+        @include('layouts.sidebar')
         <div class="page-wrapper">
-            @yield('admin')
+            @yield('body')
         </div>
     </div>
-    @else
-    <div class="main-wrapper">
-        @include('livewire.user.body.header')
-        @include('livewire.user.body.sidebar')
-        <div class="page-wrapper">
-            @yield('user')
-        </div>
-    </div>
-    @endif
     @endauth
 
     <script type="text/javascript">

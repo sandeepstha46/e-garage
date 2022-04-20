@@ -6,6 +6,7 @@ use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,17 +28,23 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
 });
-Route::get('/admin/profile', [AdminController::class, 'ViewProfile'])->name('admin.profile');
-Route::get('/admin/profile/edit', [AdminController::class, 'ProfileEdit'])->name('admin.profile.edit');
-Route::post('/admin/profile/store', [AdminController::class, 'ProfileStore'])->name('admin.profile.store');
+
+Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
+    Route::get('/admin/profile', [AdminController::class, 'ViewProfile'])->name('admin.profile');
+    Route::get('/admin/profile/edit', [AdminController::class, 'ProfileEdit'])->name('admin.profile.edit');
+    Route::post('/admin/profile/store', [AdminController::class, 'ProfileStore'])->name('admin.profile.store');
+});
 
 //For User
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
 });
-Route::get('/user/profile', [UserController::class, 'ViewProfile'])->name('user.profile');
-Route::get('/user/profile/edit', [UserController::class, 'ProfileEdit'])->name('user.profile.edit');
-Route::post('/user/profile/store', [UserController::class, 'ProfileStore'])->name('user.profile.store');
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/user/profile', [UserController::class, 'ViewProfile'])->name('user.profile');
+    Route::get('/user/profile/edit', [UserController::class, 'ProfileEdit'])->name('user.profile.edit');
+    Route::post('/user/profile/store', [UserController::class, 'ProfileStore'])->name('user.profile.store');
+});
 
 //For Booking
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -47,4 +54,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/booking/edit-booking/{id}', [BookingController::class, 'EditBooking'])->name('booking.edit');
     Route::post('/booking/edit-booking/{id}', [BookingController::class, 'UpdateBooking'])->name('booking.edit');
     Route::post('/booking/delete/{id}', [BookingController::class, 'DeleteBooking'])->name('booking.delete.');
+});
+
+//For Product
+Route::get('/product/view', [ProductController::class, 'ViewProduct'])->name('product.view');
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/product/add-product', [ProductController::class, 'AddProduct'])->name('product.add');
+    Route::post('/product/add-product', [ProductController::class, 'AddNewProduct'])->name('product.add');
 });

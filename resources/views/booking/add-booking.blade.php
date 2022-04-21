@@ -16,7 +16,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Booking ID</label>
-                            <input class="form-control" type="text" name="b_id" placeholder="BKG-0001">
+                            <input class="form-control" type="number" name="b_id" placeholder="BKG-0001">
                         </div>
                     </div>
                     <div class="col-md-3">

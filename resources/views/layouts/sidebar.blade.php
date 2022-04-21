@@ -4,16 +4,16 @@
             @auth
             @if(Auth::user()->utype === 'ADM')
             <ul>
-                @if (request()->is('admin/dashboard'))
+                @if (request()->is('dashboard'))
                 <li class="active">
-                    <a href="{{ route('admin.dashboard') }}">
+                    <a href="{{ route('dashboard') }}">
                         <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 @else
                 <li>
-                    <a href="{{ route('admin.dashboard') }}">
+                    <a href="{{ route('dashboard') }}">
                         <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
@@ -120,16 +120,16 @@
             </ul>
             @else
             <ul>
-                @if (request()->is('user/dashboard'))
+                @if (request()->is('dashboard'))
                 <li class="active">
-                    <a href="{{ route('user.dashboard') }}">
+                    <a href="{{ route('dashboard') }}">
                         <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 @else
                 <li>
-                    <a href="{{ route('user.dashboard') }}">
+                    <a href="{{ route('dashboard') }}">
                         <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>

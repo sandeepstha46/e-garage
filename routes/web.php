@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Admin\AdminDashboardComponent;
-use App\Http\Livewire\User\UserDashboardComponent;
+use App\Http\Livewire\DashboardComponent;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookingController;
@@ -25,9 +24,9 @@ Route::get('/', function () {
 
 
 //For Admin
-Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
-    Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
-});
+// Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
+//     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('dashboard');
+// });
 
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
     Route::get('/admin/profile', [AdminController::class, 'ViewProfile'])->name('admin.profile');
@@ -37,7 +36,7 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
 
 //For User
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
+    Route::get('/dashboard', DashboardComponent::class)->name('dashboard');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {

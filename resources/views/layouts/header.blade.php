@@ -2,11 +2,11 @@
 @if(Auth::user()->utype === 'ADM')
 <div class="header">
     <div class="header-left">
-        <a href="{{ route('admin.dashboard') }}" class="logo">
+        <a href="{{ route('dashboard') }}" class="logo">
             <img src="{{ asset('images/hotel_logo.png') }}" width="50" height="70" alt="logo">
             <span class="logoclass">ADMIN PANEL</span>
         </a>
-        <a href="{{ route('admin.dashboard') }}" class="logo logo-small">
+        <a href="{{ route('dashboard') }}" class="logo logo-small">
             <img src="{{ asset('images/hotel_logo.png') }}" alt="Logo" width="30" height="30">
         </a>
     </div>
@@ -37,11 +37,11 @@
 @else
 <div class="header">
     <div class="header-left">
-        <a href="{{ route('admin.dashboard') }}" class="logo">
+        <a href="{{ route('dashboard') }}" class="logo">
             <img src="{{ asset('images/hotel_logo.png') }}" width="50" height="70" alt="logo">
             <span class="logoclass">USER PANEL</span>
         </a>
-        <a href="{{ route('user.dashboard') }}" class="logo logo-small">
+        <a href="{{ route('dashboard') }}" class="logo logo-small">
             <img src="{{ asset('images/hotel_logo.png') }}" alt="Logo" width="30" height="30">
         </a>
     </div>

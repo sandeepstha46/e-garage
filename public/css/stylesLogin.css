@@ -20,10 +20,6 @@ body{
     -webkit-box-shadow: 10px 12px 19px -14px rgba(0,0,0,0.56);
     -moz-box-shadow: 10px 12px 19px -14px rgba(0,0,0,0.56);
 }
-.actions > a{
-    background-color: #1B3975;
-    color: #fff;
-}
 
 h1,h2,h3,h4,h5,h6{
     margin-top:0
@@ -91,7 +87,8 @@ textarea.form-control{
 }
 .nav .open>a,.nav .open>a:focus,.nav .open>a:hover{
     background-color:rgba(0,0,0,.1);
-    border-color:rgba(0,0,0,.1)
+    border-color:rgba(0,0,0,.1);
+    color: #fff;
 }
 .material-icons{
     font-family:material icons;

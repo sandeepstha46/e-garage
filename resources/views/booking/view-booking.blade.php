@@ -82,6 +82,7 @@
             </div>
         </div>
     </div>
+    {{ $data->links("pagination::bootstrap-4") }}
 </div>
 
 <script type="text/javascript">

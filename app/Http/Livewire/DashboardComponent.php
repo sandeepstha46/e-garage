@@ -10,7 +10,7 @@ class DashboardComponent extends Component
 {
     public function render(Request $request)
     {
-        $data = Bookings::orderBy('id')->where('status', 1)->get();
+        $data = Bookings::orderBy('id')->where('status', 1)->paginate(2);
         return view('dashboard', compact('data'));
     }
 }

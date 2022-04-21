@@ -20,7 +20,14 @@ body{
     -webkit-box-shadow: 10px 12px 19px -14px rgba(0,0,0,0.56);
     -moz-box-shadow: 10px 12px 19px -14px rgba(0,0,0,0.56);
 }
-
+.content > nav:nth-child(3) {
+    display: flex;
+    justify-content: end;
+}
+.pagination {
+    display: flex;
+    justify-content: end;
+    }
 h1,h2,h3,h4,h5,h6{
     margin-top:0
 }
@@ -630,7 +637,7 @@ a.bg-danger:focus,a.bg-danger:hover,button.bg-danger:focus,button.bg-danger:hove
     border-color:#2962ff
 }
 .pagination>li>a,.pagination>li>span{
-    color:#2962ff
+    color:#000;
 }
 .page-link:hover{
     color:#2962ff
@@ -1647,7 +1654,7 @@ html.menu-opened body{
     background-color:#f2f5fa
 }
 .page-wrapper>.content{
-    padding:1.875rem 1.875rem 0
+    padding:0 1.875rem 0
 }
 .page-header{
     margin-bottom:1.875rem

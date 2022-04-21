@@ -93,27 +93,27 @@
                     </ul>
                 </li>
                 @if (request()->is('product/view'))
-                <li class="submenu"> <a class="subrop-booking"><i class="fas fa-user"></i> <span> Products </span> <span class="menu-arrow"></span></a>
+                <li class="submenu"> <a class="subrop-booking"><i class="fab fa-product-hunt"></i> <span> Products </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
                         <li><a href="{{ route('product.view') }}">All Products </a></li>
                         <li><a href="{{ route('product.add') }}"> Add Products </a></li>
-                        <li><a href=""> Requested Products </a></li>
+                        <li><a href="{{ route('request.view') }}"> Requested Products </a></li>
                     </ul>
                 </li>
                 @elseif (request()->is('product/add'))
-                <li class="submenu"> <a class="subrop-booking"><i class="fas fa-user"></i> <span> Products </span> <span class="menu-arrow"></span></a>
+                <li class="submenu"> <a class="subrop-booking"><i class="fab fa-product-hunt"></i> <span> Products </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
                         <li><a href="{{ route('product.view') }}">All Products </a></li>
                         <li><a href="{{ route('product.add') }}"> Add Products </a></li>
-                        <li><a href=""> Requested Products </a></li>
+                        <li><a href="{{ route('request.view') }}"> Requested Products </a></li>
                     </ul>
                 </li>
                 @else
-                <li class="submenu"> <a href=""><i class="fas fa-user"></i> <span> Products </span> <span class="menu-arrow"></span></a>
+                <li class="submenu"> <a href=""><i class="fab fa-product-hunt"></i> <span> Products </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
                         <li><a href="{{ route('product.view') }}">All Products </a></li>
                         <li><a href="{{ route('product.add') }}"> Add Products </a></li>
-                        <li><a href=""> Requested Products </a></li>
+                        <li><a href="{{ route('request.view') }}"> Requested Products </a></li>
                     </ul>
                 </li>
                 @endif
@@ -203,7 +203,7 @@
                 @endif
                 <li class="submenu"> <a href="#"><i class="fab fa-product-hunt"></i> <span> Products </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
-                        <li><a href="payments.html">Request Products</a></li>
+                        <li><a href="{{ route('request.view') }}">Request Products</a></li>
                     </ul>
                 </li>
             </ul>

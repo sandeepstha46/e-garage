@@ -10,7 +10,7 @@ class BookingController extends Controller
 {
     public function ViewBooking(Request $request)
     {
-        $data = Bookings::orderBy('id', 'asc')->where('status', 1)->get();
+        $data = Bookings::orderBy('id', 'desc')->where('status', 1)->paginate(5);
         return view('booking.view-booking', compact('data'));
     }
 

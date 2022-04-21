@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +57,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 });
 
 //For Product
-
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/product/view', [ProductController::class, 'ViewProduct'])->name('product.view');
     Route::get('/product/add-product', [ProductController::class, 'AddProduct'])->name('product.add');
@@ -65,3 +65,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('/product/edit-product/{id}', [ProductController::class, 'UpdateProduct'])->name('product.edit');
     Route::post('/product/delete/{id}', [ProductController::class, 'DeleteProduct'])->name('product.delete');
 });
+
+
+//All Request
+
+Route::get('/request/view', [RequestController::class, 'ViewRequest'])->name('request.view');

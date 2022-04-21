@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function ViewProduct(Request $request)
     {
-        $data = Products::orderBy('id', 'asc')->where('status', 1)->get();
+        $data = Products::orderBy('id', 'desc')->where('status', 1)->paginate(5);
         return view('product.view-product', compact('data'));
     }
 

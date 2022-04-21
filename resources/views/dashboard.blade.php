@@ -4,7 +4,7 @@
 <div class="content container-fluid">
     <div class="page-header">
         <div class="row">
-            <div class="col-sm-12 mt-5">
+            <div class="col-sm-12 mt-1">
                 <div class="greetings">
                     <h3 id="greetings" class="page-title mt-3"></h3>
                     <h3 class="page-title mt-3">&nbsp;{{ Auth::user()->name }},</h3>
@@ -148,6 +148,7 @@
                     </div>
                 </div>
             </div>
+            {{ $data->links("pagination::bootstrap-4") }}
         </div>
         <div class="col-md-12 text-center copy-right">
             <p>Copyright &copy; All rights reserved to <a href="">e-garage</a></p>

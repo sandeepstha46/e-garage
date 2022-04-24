@@ -8,9 +8,13 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
+    //status 1=pending ,2=reviewed 3=complete ,0=>delete
     public function ViewBooking(Request $request)
     {
-        $data = Bookings::orderBy('id', 'desc')->where('status', 1)->paginate(5);
+        $data = Bookings::orderBy('id', 'desc')->where('status', '>', 0)->paginate(5);
+        //user_id = Auth::user->id;
+        // $data = Bookings::orderBy('id', 'desc')->where('status', '>', 0)->->where('uid', $user_id)->paginate(5);
+
         return view('booking.view-booking', compact('data'));
     }
 

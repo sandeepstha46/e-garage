@@ -18,7 +18,10 @@
             <div class="col">
                 <div class="mt-5">
                     <h4 class="card-title float-left mt-2">All Requests</h4>
+                    @if(Auth::user()->utype === 'ADM')
+                    @else
                     <a href="" class="btn btn-primary float-right veiwbutton ">Add Request</a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -32,7 +35,7 @@
                             <thead>
                                 <tr>
                                     <th>Request ID</th>
-                                    <th>Your Name</th>
+                                    <th>Name</th>
                                     <th>Product For</th>
                                     <th>Vehicle Model</th>
                                     <th>Vehicle Manufacturing Year</th>

@@ -9,4 +9,9 @@ class Bookings extends Model
 {
     use HasFactory;
     protected $table = "bookings";
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

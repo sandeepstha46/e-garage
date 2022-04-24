@@ -21,7 +21,7 @@
                 <div class="card-body">
                     <div class="dash-widget-header">
                         <div>
-                            <h3 class="card_widget_header">236</h3>
+                            <h3 class="card_widget_header">{{ $daall->count() }}</h3>
                             <h6 class="text-muted">Total Booking</h6>
                         </div>
                         <div class="ml-auto mt-md-3 mt-lg-0"> <span class="opacity-7 text-muted">
@@ -150,9 +150,71 @@
             </div>
             {{ $data->links("pagination::bootstrap-4") }}
         </div>
-        <div class="col-md-12 text-center copy-right">
-            <p>Copyright &copy; All rights reserved to <a href="">e-garage</a></p>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table">
+                <div class="card-body booking_card">
+                    <div class="table-responsive">
+                        <table class="datatable table table-stripped table table-hover table-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Product ID</th>
+                                    <th>Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Car Model</th>
+                                    <th>Car Manufacturing Year</th>
+                                    <th>Request Part</th>
+                                    <th>Text Area</th>
+                                    <th>Status</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($product as $product)
+                                <tr>
+                                    <td>{{$product->p_id}}</td>
+                                    <td>{{$product->name}}</td>
+                                    <td>{{$product->p_number}}</td>
+                                    <td>{{$product->car_model}}</td>
+                                    <td>{{$product->car_year}}</td>
+                                    <td>{{$product->req_part}}</td>
+                                    <td>{{$product->textarea}}</td>
+                                    <td>
+                                        <div class="actions">
+                                            <a href="#" class="btn btn-sm bg-success-light mr-2">Active</a>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v ellipse_color"></i>
+                                            </a>
+                                            <form method="post" action="{{ url('product/delete/'.$product->id) }}">
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="{{ url('product/edit-product/'.$product->id) }}">
+                                                        <i class="fas fa-pencil-alt m-r-5"></i> Edit </a>
+                                                    @csrf
+                                                    <button class="dropdown-item" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="col-md-12">
+            {{ $data->links("pagination::bootstrap-4") }}
+        </div>
+    </div>
+    <div class="col-md-12 text-center copy-right">
+        <p>Copyright &copy; All rights reserved to <a href="">e-garage</a></p>
     </div>
 </div>
 @else
@@ -227,6 +289,7 @@
                     </div>
                 </div>
             </div>
+            {{ $data->links("pagination::bootstrap-4") }}
         </div>
         <div class="col-md-12 text-center copy-right">
             <p>Copyright &copy; All rights reserved to <a href="">e-garage</a></p>

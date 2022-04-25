@@ -20,12 +20,12 @@
         <li class="nav-item dropdown has-arrow">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                 <span class="user-img">
-                    <i class="fas fa-user" style="font-size: 20px;color: #1B3975;"></i>{{Auth::user()->name}}
+                    <img class="rounded-circle" alt="User Image" src="{{ (!empty(Auth::user()->profile_photo_path))? url('images/upload_images/user_images/'.Auth::user()->profile_photo_path): url('images/upload_images/no_avatar.png') }}" width="40">
                 </span>
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="{{ url('/') }}">Home</a>
-                <a class="dropdown-item" href="{{ route('admin.profile') }}">My Profile</a>
+                <a class="dropdown-item" href="{{ route('user.profile') }}">My Profile</a>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 <form id="logout-form" method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -55,7 +55,7 @@
         <li class="nav-item dropdown has-arrow">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                 <span class="user-img">
-                    <i class="fas fa-user" style="font-size: 20px;color: #1B3975;"></i>{{Auth::user()->name}}
+                    <img class="rounded-circle" alt="User Image" src="{{ (!empty(Auth::user()->profile_photo_path))? url('images/upload_images/user_images/'.Auth::user()->profile_photo_path): url('images/upload_images/no_avatar.png') }}" width="40">
                 </span>
             </a>
             <div class="dropdown-menu">

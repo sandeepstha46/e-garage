@@ -23,6 +23,8 @@ class ProductsTable extends Migration
             $table->string('req_part');
             $table->string('textarea');
             $table->boolean('status')->default(1);
+            $table->integer('u_id')->unsigned();
+            $table->foreign('u_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

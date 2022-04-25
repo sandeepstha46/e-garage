@@ -2069,6 +2069,9 @@ html.menu-opened body{
     border-color:transparent;
     padding-bottom:0
 }
+#content{
+    margin-bottom: 0px;
+}
 .activity-feed .feed-item:after{
     content:"";
     display:block;

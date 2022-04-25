@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -29,6 +30,7 @@ class ProductController extends Controller
         $product->car_year = $request->car_year;
         $product->req_part = $request->req_part;
         $product->textarea = $request->textarea;
+        $product->u_id = Auth::user()->id;
 
         if ($product->save()) {
             return redirect('product/view')->with('success', 'New Product Added Successfully');

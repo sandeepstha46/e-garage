@@ -5,9 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     @if (request()->is('dashboard'))
-    @elseif(request()->is('admin/profile'))
+    <title>Dashboard</title>
+    @elseif(request()->is('profile'))
     <title>Profile</title>
-    @elseif(request()->is('admin/profile/edit'))
+    @elseif(request()->is('profile/edit'))
     <title>Profile Edit</title>
     @elseif(request()->is('user/profile'))
     <title>User Profile</title>
@@ -19,6 +20,8 @@
     <title>View booking</title>
     @elseif(request()->is('booking/add-booking'))
     <title>Add booking</title>
+    @elseif(request()->is('customers/view'))
+    <title>View Customers</title>
     @else
     <title>Home</title>
     @endif

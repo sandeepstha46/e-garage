@@ -24,15 +24,12 @@ Route::get('/', function () {
 });
 
 
-//For Admin
-// Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
-//     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('dashboard');
-// });
 
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
-    Route::get('/admin/profile', [AdminController::class, 'ViewProfile'])->name('admin.profile');
-    Route::get('/admin/profile/edit', [AdminController::class, 'ProfileEdit'])->name('admin.profile.edit');
-    Route::post('/admin/profile/store', [AdminController::class, 'ProfileStore'])->name('admin.profile.store');
+    Route::get('/customers/view', [AdminController::class, 'ViewCustomers'])->name('customers.view');
+    Route::get('/customers/edit_customers/{id}', [AdminController::class, 'EditCustomers'])->name('customers.edit');
+    Route::post('/customers/edit_customers/{id}', [AdminController::class, 'UpdateCustomers'])->name('customers.edit');
+    Route::post('/customers/delete/{id}', [AdminController::class, 'DeleteCustomers'])->name('customers.delete');
 });
 
 //For User

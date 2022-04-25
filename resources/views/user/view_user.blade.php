@@ -3,12 +3,23 @@
 
 <div class="content container-fluid">
     <div class="page-header mt-5">
+        @if (session('error'))
+        <div id="mess-age">
+            <p class="alert alert-danger">{{ session('errors') }}</p>
+        </div>
+        @endif
+
+        @if (session('success'))
+        <div id="mess-age">
+            <p class="alert alert-success">{{ session('success') }}</p>
+        </div>
+        @endif
         <div class="row">
             <div class="col">
                 <h3 class="page-title">Profile</h3>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('user.dashboard') }}">Dashboard</a>
+                        <a href="{{ route('dashboard') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active">Profile</li>
                 </ul>
@@ -163,5 +174,13 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function closeMessage() {
+        document.getElementById("mess-age").style.display = " none";
+    }
+
+    window.setTimeout(closeMessage, 3000);
+</script>
 
 @endsection

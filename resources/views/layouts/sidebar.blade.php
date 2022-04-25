@@ -87,9 +87,7 @@
                 @endif
                 <li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Customers </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
-                        <li><a href="all-customer.html"> All customers </a></li>
-                        <li><a href="edit-customer.html"> Edit Customer </a></li>
-                        <li><a href="add-customer.html"> Add Customer </a></li>
+                        <li><a href="{{ route('customers.view') }}"> All customers </a></li>
                     </ul>
                 </li>
                 @if (request()->is('product/view'))

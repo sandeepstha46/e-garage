@@ -35,8 +35,10 @@ class UserController extends Controller
             $file->move(public_path('images/upload_images/user_images'), $filename);
             $data['profile_photo_path'] = $filename;
         }
-        $data->save();
-
-        return redirect()->route('user.profile');
+        if ($data->save()) {
+            return redirect('user/profile')->with('success', 'User Profile Updated Successfully');
+        } else {
+            return redirect('user/profile/edit')->with('error', 'Sorry Some Error Occured');
+        }
     }
 }

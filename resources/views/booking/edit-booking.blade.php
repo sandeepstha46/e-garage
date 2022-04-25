@@ -32,6 +32,46 @@
                             <input type="text" class="form-control" id="usr" name="email" placeholder="{{ $booking->email}}">
                         </div>
                     </div>
+                    @if(Auth::user()->utype === 'ADM')
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select class="form-control" id="sel2" name="status">
+                                <option value="0">Deleted</option>
+                                <option value="1">Pending</option>
+                                <option value="6">Processing</option>
+                                <option value="7">Received</option>
+                                <option value="8">Ready To Deliver</option>
+                                <option value="9">Delivered</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Booking Type</label>
+                            <select class="form-control" id="sel2" name="btype">
+                                <option value="0">Select Service</option>
+                                <option value="1">Bike Service</option>
+                                <option value="2">Car Serivce</option>
+                                <option value="3">General Repair</option>
+                                <option value="4">Cleaning / Detailing</option>
+                            </select>
+                        </div>
+                    </div>
+                    @else
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Booking Type</label>
+                            <select class="form-control" id="sel2" name="btype">
+                                <option value="0">Select Service</option>
+                                <option value="1">Bike Service</option>
+                                <option value="2">Car Serivce</option>
+                                <option value="3">General Repair</option>
+                                <option value="4">Cleaning / Detailing</option>
+                            </select>
+                        </div>
+                    </div>
+                    @endif
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Booking Type</label>

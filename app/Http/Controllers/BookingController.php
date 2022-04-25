@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Bookings;
 use Illuminate\Http\Request;
@@ -11,10 +12,8 @@ class BookingController extends Controller
     //status 1=pending ,2=reviewed 3=complete ,0=>delete
     public function ViewBooking(Request $request)
     {
-        $data = Bookings::orderBy('id', 'desc')->where('status', '>', 0)->paginate(5);
-        //user_id = Auth::user->id;
-        // $data = Bookings::orderBy('id', 'desc')->where('status', '>', 0)->->where('uid', $user_id)->paginate(5);
-
+        //fetched bookings of those user who booked it.
+        $data = Bookings::orderBy('id', 'desc')->whereUId(Auth::id())->where('status', '>', 0)->paginate(5);
         return view('booking.view-booking', compact('data'));
     }
 
@@ -33,6 +32,7 @@ class BookingController extends Controller
         $booking->p_number = $request->p_number;
         $booking->v_number = $request->v_number;
         $booking->textarea = $request->textarea;
+        $booking->u_id = Auth::user()->id;
 
         if ($booking->save()) {
             return redirect('booking/view')->with('success', 'New Booking Added Successfully');
@@ -53,6 +53,7 @@ class BookingController extends Controller
         $booking->b_id = $request->b_id;
         $booking->name = $request->name;
         $booking->email = $request->email;
+        $booking->status = $request->status;
         $booking->btype = $request->btype;
         $booking->p_number = $request->p_number;
         $booking->v_number = $request->v_number;
@@ -68,7 +69,7 @@ class BookingController extends Controller
     public function DeleteBooking($id)
     {
         $data = Bookings::findOrFail($id);
-        $data->status = 3;
+        $data->status = 0;
         $result = $data->save();
 
         $data = Bookings::orderBy('id', 'asc')->where('status', 1)->get();

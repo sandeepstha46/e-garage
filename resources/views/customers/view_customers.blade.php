@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('body')
-
 <div class="content container-fluid">
     <div class="page-header">
         @if (session('error'))
@@ -14,15 +13,6 @@
             <p class="alert alert-success">{{ session('success') }}</p>
         </div>
         @endif
-
-        <div class="row align-items-center">
-            <div class="col">
-                <div class="mt-5">
-                    <h4 class="card-title float-left mt-2">My Bookings</h4>
-                    <a href="{{ route('booking.add') }}" class="btn btn-primary float-right veiwbutton ">Add Booking</a>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
@@ -32,42 +22,30 @@
                         <table class="datatable table table-stripped table table-hover table-center mb-0">
                             <thead>
                                 <tr>
-                                    <th>Booking ID</th>
+                                    <th>Id</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Booking Type</th>
-                                    <th>Phone Number</th>
-                                    <th>Vehicle Number</th>
-                                    <th>Text Area</th>
-                                    <th>Status</th>
+                                    <th>Password</th>
+                                    <th>Profile Image</th>
                                     <th class="text-right">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data as $booking)
+                                @foreach($data as $user)
                                 <tr>
-                                    <td>{{$booking->b_id}}</td>
-                                    <td>{{$booking->name}}</td>
-                                    <td>{{$booking->email}}</td>
-                                    <td>{{$booking->btype}}</td>
-                                    <td>{{$booking->p_number}}</td>
-                                    <td>{{$booking->v_number}}</td>
-                                    <td>{{$booking->textarea}}</td>
-                                    <td>
-                                        <div class="actions" onload="myFunction()">
-                                            <a href="#" class="btn btn-sm bg-success-light mr-2">
-                                                {{$booking->status}}
-                                            </a>
-                                        </div>
-                                    </td>
+                                    <td>{{ $user -> id }}</td>
+                                    <td>{{ $user -> name }}</td>
+                                    <td>{{ $user -> email }}</td>
+                                    <td>{{ $user -> password }}</td>
+                                    <td><img class="rounded-circle" alt="User Image" src="{{ (!empty($user->profile_photo_path))? url('images/upload_images/user_images/'.$user->profile_photo_path): url('images/upload_images/no_avatar.png') }}" width="40"></td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v ellipse_color"></i>
                                             </a>
-                                            <form method="post" action="{{ url('booking/delete/'.$booking->id) }}">
+                                            <form method="post" action="{{ url('customers/delete/'. $user->id) }}">
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="{{ url('booking/edit-booking/'.$booking->id) }}">
+                                                    <a class="dropdown-item" href="{{ url('customers/edit_customers/'. $user->id) }}">
                                                         <i class="fas fa-pencil-alt m-r-5"></i> Edit </a>
                                                     @csrf
                                                     <button class="dropdown-item" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete </button>
@@ -84,9 +62,7 @@
             </div>
         </div>
     </div>
-    {{ $data->links("pagination::bootstrap-4") }}
 </div>
-
 
 <script type="text/javascript">
     function closeMessage() {
@@ -95,5 +71,4 @@
 
     window.setTimeout(closeMessage, 3000);
 </script>
-
 @endsection

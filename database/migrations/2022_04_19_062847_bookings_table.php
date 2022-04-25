@@ -18,11 +18,13 @@ class BookingsTable extends Migration
             $table->string('b_id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->boolean('status')->default(1);
             $table->integer('btype')->default(1);
             $table->integer('p_number');
             $table->integer('v_number');
             $table->string('textarea');
-            $table->boolean('status')->default(1);
+            $table->integer('u_id')->unsigned();
+            $table->foreign('u_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -2069,6 +2069,9 @@ html.menu-opened body{
     border-color:transparent;
     padding-bottom:0
 }
+.column-12{
+    padding: 0px 25px 15px 40px; 
+}
 #content{
     margin-bottom: 0px;
 }

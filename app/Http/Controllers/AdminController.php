@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -26,7 +26,7 @@ class AdminController extends Controller
         $customers->id = $request->id;
         $customers->name = $request->name;
         $customers->email = $request->email;
-        $customers->password = $request->password;
+        $customers->password = Hash::make(12345678);
         if ($request->file('profile_photo_path')) {
             $file = $request->file('profile_photo_path');
             @unlink(public_path('images/upload_images/user_images' . $customers->profile_photo_path));

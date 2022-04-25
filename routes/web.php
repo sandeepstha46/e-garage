@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 
-
+//For Customers Managed by Admin
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
     Route::get('/customers/view', [AdminController::class, 'ViewCustomers'])->name('customers.view');
     Route::get('/customers/edit_customers/{id}', [AdminController::class, 'EditCustomers'])->name('customers.edit');
@@ -32,11 +32,12 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     Route::post('/customers/delete/{id}', [AdminController::class, 'DeleteCustomers'])->name('customers.delete');
 });
 
-//For User
+//For Dashboard
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', DashboardComponent::class)->name('dashboard');
 });
 
+//For User Profile Edit
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/user/profile', [UserController::class, 'ViewProfile'])->name('user.profile');
     Route::get('/user/profile/edit', [UserController::class, 'ProfileEdit'])->name('user.profile.edit');
@@ -64,6 +65,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 });
 
 
-//All Request
-
-Route::get('/request/view', [RequestController::class, 'ViewRequest'])->name('request.view');
+//For Request
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/request/view', [RequestController::class, 'ViewRequest'])->name('request.view');
+    Route::get('/request/add', [RequestController::class, 'AddRequest'])->name('request.add');
+    Route::post('/request/add', [RequestController::class, 'NewRequest'])->name('request.add');
+    Route::get('/request/edit-request/{id}', [RequestController::class, 'EditRequest'])->name('request.edit');
+    Route::post('/request/edit-request/{id}', [RequestController::class, 'UpdateRequest'])->name('request.edit');
+    Route::post('/request/delete/{id}', [RequestController::class, 'DeleteRequest'])->name('request.delete');
+});

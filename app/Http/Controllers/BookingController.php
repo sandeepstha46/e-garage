@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    //status 1=pending ,2=reviewed 3=complete ,0=>delete
     public function ViewBooking(Request $request)
     {
         //fetched bookings of those user who booked it.

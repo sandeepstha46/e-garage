@@ -17,9 +17,9 @@
         <div class="back-to-profile">
             <p><a class="back" href="{{ route('user.profile') }}">🡠 Back</a></p>
         </div>
-        <p class="card-title title_menu">Basic Informations</p>
+        <p class="card-title title_menu" style="padding-left:30px;">Basic Informations</p>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 column-12">
                 <form method="post" action="{{ route('user.profile.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row formtype">

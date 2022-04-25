@@ -18,7 +18,7 @@
             <p><a class="back" href="{{ url ('customers/edit_customers/'.$customers->id) }}">🡠 Back</a></p>
         </div>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 column-12">
                 <form method="post" action="" enctype="multipart/form-data">
                     @csrf
                     <div class="row formtype">
@@ -34,14 +34,14 @@
                                 <input class="form-control" type="email" name="email" placeholder="{{ $customers->email }}" id="exampleInputEmail1" required />
                             </div>
                         </div>
+                    </div>
+                    <div class="row formtype">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Password</label>
                                 <input class="form-control" type="password" name="password" placeholder="{{ $customers->password }}" id="exampleInputEmail1" required />
                             </div>
                         </div>
-                    </div>
-                    <div class="row formtype">
                         <div class="col-md-1">
                             <div class="form-group">
                                 <img id="showImage" src="{{ (!empty($customers->profile_photo_path))? url('images/upload_images/user_images/'.$customers->profile_photo_path): url('images/upload_images/no_avatar.png') }}" alt="" width="100" />

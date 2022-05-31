@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Requests;
 use App\Models\Bookings;
 use App\Models\Products;
 use App\Models\User;
@@ -18,7 +19,8 @@ class DashboardComponent extends Component
             $data = Bookings::orderBy('id')->where('status', '>', 0)->paginate(2);
             $product = Products::orderBy('id')->where('status', '>', 0)->paginate(2);
             $daall = Bookings::all()->where('status', '>', 0);
-            return view('dashboard', compact('data', 'product', 'daall', 'user'));
+            $req = Requests::all()->where('status', '>', 0);
+            return view('dashboard', compact('data', 'product', 'daall', 'user', 'req'));
         } else {
             $data = Bookings::orderBy('id')->whereUId(Auth::id())->where('status', '>', 0)->paginate(2);
             $product = Products::orderBy('id')->where('status', '>', 0)->paginate(2);

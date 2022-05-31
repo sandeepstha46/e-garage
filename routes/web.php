@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\RequestController;
 
 /*
@@ -22,6 +23,8 @@ use App\Http\Controllers\RequestController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/product-list', [FrontController::class, 'index'])->name('product.list');
 
 
 //For Customers Managed by Admin

@@ -38,7 +38,7 @@
                                     <th>Booking Type</th>
                                     <th>Phone Number</th>
                                     <th>Vehicle Number</th>
-                                    <th>Text Area</th>
+                                    <th>Message</th>
                                     <th>Status</th>
                                     <th class="text-right">Actions</th>
                                 </tr>
@@ -49,28 +49,32 @@
                                     <td>{{$booking->b_id}}</td>
                                     <td>{{$booking->name}}</td>
                                     <td>{{$booking->email}}</td>
-                                    <td>{{$booking->btype}}</td>
+                                    <td id="bookingtype">{{$booking->btype}}</td>
                                     <td>{{$booking->p_number}}</td>
                                     <td>{{$booking->v_number}}</td>
                                     <td>{{$booking->textarea}}</td>
                                     <td>
                                         <div class="actions" onload="myFunction()">
-                                            <a href="#" class="btn btn-sm bg-success-light mr-2">
+                                            <a id="status" href="#" class="btn btn-sm bg-success-light mr-2">
                                                 {{$booking->status}}
                                             </a>
                                         </div>
                                     </td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                                aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v ellipse_color"></i>
                                             </a>
                                             <form method="post" action="{{ url('booking/delete/'.$booking->id) }}">
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="{{ url('booking/edit-booking/'.$booking->id) }}">
+                                                    <a class="dropdown-item"
+                                                        href="{{ url('booking/edit-booking/'.$booking->id) }}">
                                                         <i class="fas fa-pencil-alt m-r-5"></i> Edit </a>
                                                     @csrf
-                                                    <button class="dropdown-item" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete </button>
+                                                    <button class="dropdown-item" data-toggle="modal"
+                                                        data-target="#delete_asset"><i
+                                                            class="fas fa-trash-alt m-r-5"></i> Delete </button>
                                                 </div>
                                             </form>
                                         </div>
@@ -87,13 +91,62 @@
     {{ $data->links("pagination::bootstrap-4") }}
 </div>
 
+<script>
+const allData = [...document.querySelectorAll("#status")];
+
+allData.forEach((ele) => {
+    switch (ele.innerText) {
+        case "0":
+            ele.innerText = "Car Servicing";
+            break;
+        case "1":
+            ele.innerText = "Pending";
+            break;
+        case "2":
+            ele.innerText = "Processing";
+            break;
+        case "3":
+            ele.innerText = "Vehicle Received";
+        case "4":
+            ele.innerText = "Servicing";
+        case "5":
+            ele.innerText = "Ready to Deliver";
+        case "6":
+            ele.innerText = "Delivered";
+            break;
+    }
+});
+</script>
+
+<script>
+const allBooking = [...document.querySelectorAll("#bookingtype")];
+
+allBooking.forEach((ele) => {
+    switch (ele.innerText) {
+        case "0":
+            ele.innerText = "Select Service";
+            break;
+        case "1":
+            ele.innerText = "Bike Service";
+            break;
+        case "2":
+            ele.innerText = "Car Service";
+            break;
+        case "3":
+            ele.innerText = "general Repair";
+        case "4":
+            ele.innerText = "Cleaning / Detail";
+            break;
+    }
+});
+</script>
 
 <script type="text/javascript">
-    function closeMessage() {
-        document.getElementById("mess-age").style.display = " none";
-    }
+function closeMessage() {
+    document.getElementById("mess-age").style.display = " none";
+}
 
-    window.setTimeout(closeMessage, 3000);
+window.setTimeout(closeMessage, 3000);
 </script>
 
 @endsection

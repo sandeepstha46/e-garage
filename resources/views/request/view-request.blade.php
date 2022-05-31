@@ -41,7 +41,6 @@
                                     <th>Vehicle Manufacturing Year</th>
                                     <th>Required Product</th>
                                     <th>Remark</th>
-                                    <th>Status</th>
                                     <th class="text-right">Actions</th>
                                 </tr>
                             </thead>
@@ -55,22 +54,21 @@
                                     <td>{{$requests->v_year}}</td>
                                     <td>{{$requests->req_part}}</td>
                                     <td>{{$requests->textarea}}</td>
-                                    <td>
-                                        <div class="actions">
-                                            <a href="#" class="btn btn-sm bg-success-light mr-2">Active</a>
-                                        </div>
-                                    </td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                                aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v ellipse_color"></i>
                                             </a>
                                             <form method="post" action="{{ url('/request/delete/'.$requests->id) }}">
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="{{ url('/request/edit-request/'.$requests->id) }}">
+                                                    <a class="dropdown-item"
+                                                        href="{{ url('/request/edit-request/'.$requests->id) }}">
                                                         <i class="fas fa-pencil-alt m-r-5"></i> Edit </a>
                                                     @csrf
-                                                    <button class="dropdown-item" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete </button>
+                                                    <button class="dropdown-item" data-toggle="modal"
+                                                        data-target="#delete_asset"><i
+                                                            class="fas fa-trash-alt m-r-5"></i> Delete </button>
                                                 </div>
                                             </form>
                                         </div>
@@ -88,10 +86,10 @@
 </div>
 
 <script type="text/javascript">
-    function closeMessage() {
-        document.getElementById("mess-age").style.display = " none";
-    }
+function closeMessage() {
+    document.getElementById("mess-age").style.display = " none";
+}
 
-    window.setTimeout(closeMessage, 3000);
+window.setTimeout(closeMessage, 3000);
 </script>
 @endsection

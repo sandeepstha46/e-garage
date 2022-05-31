@@ -11,9 +11,15 @@ class BookingController extends Controller
 {
     public function ViewBooking(Request $request)
     {
-        //fetched bookings of those user who booked it.
-        $data = Bookings::orderBy('id', 'desc')->whereUId(Auth::id())->where('status', '>', 0)->paginate(5);
+        // get all bookings for admin
+        if (Auth::user()->utype === 'ADM') {
+            $data = Bookings::orderBy('id')->where('status', '>', 0)->paginate(5);
         return view('booking.view-booking', compact('data'));
+        }else{
+            //fetched bookings of those user who booked it.
+            $data = Bookings::orderBy('id', 'desc')->whereUId(Auth::id())->where('status', '>', 0)->paginate(5);
+        return view('booking.view-booking', compact('data'));
+        }
     }
 
     public function AddBooking()

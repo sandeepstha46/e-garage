@@ -58,7 +58,8 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Extra Message</label>
-                            <textarea class="form-control" rows="5" id="comment" name="textarea" placeholder="If you have any enquiry, write here"></textarea>
+                            <textarea class="form-control" rows="5" id="comment" name="textarea"
+                                placeholder="If you have any enquiry, write here"></textarea>
                         </div>
                     </div>
                 </div>

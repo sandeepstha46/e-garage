@@ -31,14 +31,13 @@
                         <table class="datatable table table-stripped table table-hover table-center mb-0">
                             <thead>
                                 <tr>
-                                    <th>Product ID</th>
+                                    <th>ID</th>
                                     <th>Name</th>
                                     <th>Phone Number</th>
                                     <th>Car Model</th>
                                     <th>Car Manufacturing Year</th>
                                     <th>Request Part</th>
                                     <th>Text Area</th>
-                                    <th>Status</th>
                                     <th class="text-right">Actions</th>
                                 </tr>
                             </thead>
@@ -52,22 +51,21 @@
                                     <td>{{$product->car_year}}</td>
                                     <td>{{$product->req_part}}</td>
                                     <td>{{$product->textarea}}</td>
-                                    <td>
-                                        <div class="actions">
-                                            <a href="#" class="btn btn-sm bg-success-light mr-2">Active</a>
-                                        </div>
-                                    </td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                                aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v ellipse_color"></i>
                                             </a>
                                             <form method="post" action="{{ url('product/delete/'.$product->id) }}">
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="{{ url('product/edit-product/'.$product->id) }}">
+                                                    <a class="dropdown-item"
+                                                        href="{{ url('product/edit-product/'.$product->id) }}">
                                                         <i class="fas fa-pencil-alt m-r-5"></i> Edit </a>
                                                     @csrf
-                                                    <button class="dropdown-item" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete </button>
+                                                    <button class="dropdown-item" data-toggle="modal"
+                                                        data-target="#delete_asset"><i
+                                                            class="fas fa-trash-alt m-r-5"></i> Delete </button>
                                                 </div>
                                             </form>
                                         </div>
@@ -84,11 +82,35 @@
     {{ $data->links("pagination::bootstrap-4") }}
 </div>
 
-<script type="text/javascript">
-    function closeMessage() {
-        document.getElementById("mess-age").style.display = " none";
-    }
+<script>
+const allData = [...document.querySelectorAll("#status")];
 
-    window.setTimeout(closeMessage, 3000);
+allData.forEach((ele) => {
+    switch (ele.innerText) {
+        case "1":
+            ele.innerText = "Pending";
+            break;
+        case "2":
+            ele.innerText = "Processing";
+            break;
+        case "3":
+            ele.innerText = "Vehicle Received";
+        case "4":
+            ele.innerText = "Servicing";
+        case "5":
+            ele.innerText = "Ready to Deliver";
+        case "6":
+            ele.innerText = "Delivered";
+            break;
+    }
+});
+</script>
+
+<script type="text/javascript">
+function closeMessage() {
+    document.getElementById("mess-age").style.display = " none";
+}
+
+window.setTimeout(closeMessage, 3000);
 </script>
 @endsection

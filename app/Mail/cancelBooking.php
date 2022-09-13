@@ -29,7 +29,7 @@ class cancelBooking extends Mailable
      */
     public function build(Bookings $data)
     {
-        $namebooking = Bookings::where('status', '>', 0)->first();
+        $namebooking = Bookings::where('rank', '>', 0)->first();
         return $this->view('emails.cancel-booking',compact('namebooking'));
     }
 }

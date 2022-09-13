@@ -29,7 +29,7 @@ class updateBooking extends Mailable
      */
     public function build(Bookings $booking)
     {
-        $dataItem = Bookings::where('status', '>', 0)->first();
-        return $this->view('emails.update-booking',compact('dataItem'));
+        $dataItem = Bookings::where('rank', '>', 0)->first();
+        return $this->view('emails.update-booking', compact('dataItem'));
     }
 }

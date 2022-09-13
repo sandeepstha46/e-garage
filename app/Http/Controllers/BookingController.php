@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Bookings;
 use App\Mail\bookingsMail;
@@ -19,11 +18,11 @@ class BookingController extends Controller
     {
         // get all bookings for admin
         if (Auth::user()->utype === 'ADM') {
-            $data = Bookings::orderBy('id')->where('status', '>', 0)->paginate(5);
+            $data = Bookings::orderBy('id')->where('rank', '>', 0)->paginate(5);
             return view('booking.view-booking', compact('data'));
         } else {
             //fetched bookings of those user who booked it.
-            $data = Bookings::orderBy('id', 'desc')->whereUId(Auth::id())->where('status', '>', 0)->paginate(5);
+            $data = Bookings::orderBy('id', 'desc')->whereUId(Auth::id())->where('rank', '>', 0)->paginate(5);
             return view('booking.view-booking', compact('data'));
         }
     }
@@ -91,10 +90,10 @@ class BookingController extends Controller
     public function DeleteBooking($id)
     {
         $data = Bookings::findOrFail($id);
-        $data->status = 0;
+        $data->rank = 0;
         $email = $data->email;
         $result = $data->save();
-        $data = Bookings::orderBy('id', 'asc')->where('status', 1)->get();
+        $data = Bookings::orderBy('id', 'asc')->where('rank', 1)->get();
         if ($result) {
             Mail::to($email)->send(new cancelBooking($data));
             return redirect('booking/view')->with('success', 'Booking Deleted Successfully');

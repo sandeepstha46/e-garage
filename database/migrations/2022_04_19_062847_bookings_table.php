@@ -17,10 +17,11 @@ class BookingsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email');
-            $table->string('status');
+            $table->string('status')->default("Pending");
             $table->string('type');
             $table->string('phone');
             $table->string('vehicle');
+            $table->boolean('rank')->default("1");
             $table->string('textarea')->nullable();
             $table->integer('u_id')->unsigned();
             $table->foreign('u_id')->references('id')->on('users');

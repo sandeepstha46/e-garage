@@ -16,9 +16,9 @@ class DashboardComponent extends Component
     {
         if (Auth::user()->utype === 'ADM') {
             $user = User::all()->where('status', '>', 1);
-            $data = Bookings::orderBy('id')->where('status', '>', 0)->paginate(2, ["*"], 'data');
+            $data = Bookings::orderBy('id')->where('rank', '>', 0)->paginate(2, ["*"], 'data');
             $product = Products::orderBy('id')->where('status', '>', 0)->paginate(3, ["*"], 'product');
-            $daall = Bookings::all()->where('status', '>', 0);
+            $daall = Bookings::all()->where('rank', '>', 0);
             $req = Requests::all()->where('status', '>', 0);
             return view('dashboard', compact('data', 'product', 'daall', 'user', 'req'));
         } else {

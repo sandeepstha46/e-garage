@@ -30,7 +30,7 @@ class bookingsMail extends Mailable
      */
     public function build(Bookings $bookings)
     {
-        $data = Bookings::where('status', '>', 0)->first();
-        return $this->view('emails.booking-email',compact('data'));
+        $data = Bookings::where('rank', '>', 0)->first();
+        return $this->view('emails.booking-email', compact('data'));
     }
 }

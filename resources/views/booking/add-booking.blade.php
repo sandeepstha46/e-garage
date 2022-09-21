@@ -20,18 +20,6 @@
             <form method="POST" action="{{ route('booking.add') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row formtype">
-                    <div class="col-md-3 hide-input">
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input class="form-control pre-called" type="text" name="name" placeholder="Your Name" value="{{ $user->name }}">
-                        </div>
-                    </div>
-                    <div class="col-md-3 hide-input">
-                        <div class="form-group">
-                            <label>Email ID</label>
-                            <input type="email" class="form-control" id="usr" name="email" placeholder="Email" value="{{ $user->email }}">
-                        </div>
-                    </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Booking Type</label>
@@ -44,16 +32,22 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group">
                             <label>Phone Number</label>
                             <input type="number" name="phone" class="form-control" id="usr1" value="{{ $user->phone }}">
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group">
                             <label>Vehicle Number</label>
                             <input type="string" name="vehicle" class="form-control" id="usr1" placeholder="KHA 85 KHA 0000">
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-group">
+                            <input type="checkbox" name="urgent" value="1" />
+                            <label>Urgent</label>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -65,6 +59,10 @@
                 </div>
                 <button type="submit" class="btn btn-primary buttonedit1">Create Booking</button>
             </form>
+            <div class="note">
+                <p>Standard Price is: Rs. 250</p>
+                <p>*Please check urgent box only when it's urgent and save us and your time.</p>
+            </div>
         </div>
     </div>
 </div>

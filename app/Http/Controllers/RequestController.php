@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\addRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Requests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class RequestController extends Controller
 {
@@ -28,15 +30,22 @@ class RequestController extends Controller
 
     public function NewRequest(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'for' => 'required',
+            'model' => 'required',
+            'manufacturing' => 'required',
+        ]);
         $data = new Requests;
         $data->name = $request->name;
-        $data->p_for = $request->p_for;
-        $data->v_model = $request->v_model;
-        $data->v_year = $request->v_year;
+        $data->for = $request->for;
+        $data->model = $request->model;
+        $data->manufacturing = $request->manufacturing;
         $data->textarea = $request->textarea;
         $data->u_id = Auth::user()->id;
 
         if ($data->save()) {
+            Mail::to(Auth::user()->email)->send(new addRequest($data));
             return redirect('request/view')->with('success', 'New Request Added Successful');
         } else {
             return redirect('request/view')->with('errors', 'Some Error Occured');
@@ -53,9 +62,9 @@ class RequestController extends Controller
     {
         $editData = Requests::findOrFail($id);
         $editData->name = $request->name;
-        $editData->p_for = $request->p_for;
-        $editData->v_model = $request->v_model;
-        $editData->v_year = $request->v_year;
+        $editData->for = $request->for;
+        $editData->model = $request->model;
+        $editData->manufacturing = $request->manufacturing;
         $editData->textarea = $request->textarea;
 
         if ($editData->save()) {

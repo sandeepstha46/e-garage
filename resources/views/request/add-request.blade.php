@@ -3,6 +3,13 @@
 
 <div class="content container-fluid">
     <div class="page-header">
+        @if (count($errors) > 0)
+        <div id="mess-age">
+            @foreach ($errors->all() as $error)
+            <p class="alert alert-danger">⚠️{{ $error }}
+                @endforeach</p>
+        </div>
+        @endif
         <div class="row align-items-center">
             <div class="col">
                 <h3 class="page-title mt-5">Add Request</h3>
@@ -23,7 +30,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Product For</label>
-                            <select class="form-control" id="sel2" name="p_for">
+                            <select class="form-control" id="sel2" name="for">
                                 <option value="Bike">Bike</option>
                                 <option value="Car">Car</option>
                             </select>
@@ -32,13 +39,13 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Vehicle Model</label>
-                            <input type="text" name="v_model" class="form-control" id="usr1">
+                            <input type="text" name="model" class="form-control" id="usr1">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Vehicle Manufacturing Year</label>
-                            <input type="date" name="v_year" class="form-control" id="usr1">
+                            <input type="date" name="manufacturing" class="form-control" id="usr1">
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -48,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary buttonedit1">Create Product</button>
+                <button type="submit" class="btn btn-primary buttonedit1">Request Now</button>
             </form>
         </div>
     </div>

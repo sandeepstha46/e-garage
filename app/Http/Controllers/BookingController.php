@@ -18,7 +18,7 @@ class BookingController extends Controller
     {
         // get all bookings for admin
         if (Auth::user()->utype === 'ADM') {
-            $data = Bookings::orderBy('id')->where('rank', '>', 0)->paginate(5);
+            $data = Bookings::orderBy('id', 'desc')->where('rank', '>', 0)->paginate(5);
             return view('booking.view-booking', compact('data'));
         } else {
             //fetched bookings of those user who booked it.
@@ -35,26 +35,31 @@ class BookingController extends Controller
 
     public function AddNewBooking(Request $request)
     {
-        $request->validate([
-            'type' => 'required',
-            'phone' => 'required|min:10|max:14',
-            'vehicle' => 'required|regex: /([A-Z]\w{1,2}\W{1})+([0-9]\w{1,2}\W{1})+([A-Z]\w{2}\W{1})+([0-9]\w{3})/i',
-        ]);
+        if (Bookings::count() < 10) {
+            $request->validate([
+                'type' => 'required',
+                'phone' => 'required|min:10|max:14',
+                'vehicle' => 'required|regex: /([A-Z]\w{1,2}\W{1})+([0-9]\w{1,2}\W{1})+([A-Z]\w{2}\W{1})+([0-9]\w{3})/i',
+            ]);
 
-        $booking = new Bookings;
-        $booking->name = Auth::user()->name;
-        $booking->email = $request->email;
-        $booking->type = $request->type;
-        $booking->phone = $request->phone;
-        $booking->vehicle = $request->vehicle;
-        $booking->textarea = $request->textarea;
-        $booking->u_id = Auth::user()->id;
+            $booking = new Bookings;
+            $booking->name = Auth::user()->name;
+            $booking->email = Auth::user()->email;
+            $booking->type = $request->type;
+            $booking->phone = $request->phone;
+            $booking->vehicle = $request->vehicle;
+            $booking->urgent = $request->urgent;
+            $booking->textarea = $request->textarea;
+            $booking->u_id = Auth::user()->id;
 
-        if ($booking->save()) {
-            Mail::to($booking->email)->send(new bookingsMail($booking));
-            return redirect('booking/view')->with('success', 'New Booking Added Successfully');
+            if ($booking->save()) {
+                Mail::to($booking->email)->send(new bookingsMail($booking));
+                return redirect('booking/view')->with('success', 'New Booking Added Successfully');
+            } else {
+                return redirect('booking/view')->with('errors', ' Sorry Some Error Occurred');
+            }
         } else {
-            return redirect('booking/view')->with('errors', ' Sorry Some Error Occurred');
+            return redirect('booking/view')->with('errors', ' Sorry! Daily urgent limit exceeded');
         }
     }
 
@@ -66,17 +71,23 @@ class BookingController extends Controller
 
     public function UpdateBooking(Request $request, $id)
     {
+
         $booking = Bookings::findOrFail($id);
         if (Auth::user()->utype === 'ADM') {
             $booking->status = $request->status;
             $booking->textarea = $request->textarea;
         } else {
-            $booking->name = $request->name;
-            $booking->email = $request->email;
+            $request->validate([
+                'type' => 'required',
+                'phone' => 'required|min:10|max:14',
+                'vehicle' => 'required|regex: /([A-Z]\w{1,2}\W{1})+([0-9]\w{1,2}\W{1})+([A-Z]\w{2}\W{1})+([0-9]\w{3})/i',
+            ]);
+            $booking->name = Auth::user()->name;
+            $booking->email = Auth::user()->email;
             $booking->type = $request->type;
             $booking->phone = $request->phone;
             $booking->vehicle = $request->vehicle;
-            $booking->status = $request->status;
+            $booking->urgent = $request->urgent;
             $booking->textarea = $request->textarea;
         }
         if ($booking->save()) {

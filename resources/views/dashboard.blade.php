@@ -3,6 +3,7 @@
 
 @if(Auth::user()->utype === 'ADM')
 <div class="content container-fluid">
+    <!-- success message -->
     <div class="page-header">
         @if (session('success'))
         <div id="mess-age">
@@ -100,6 +101,14 @@
             </div>
         </div>
     </div>
+    <!-- urgent case -->
+    <div class="row align-items-center">
+        <div class="col">
+            <div class="mt-5">
+                <h4 class="card-title float-left mt-2">Urgent Case</h4>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-12">
             <div class="card card-table">
@@ -157,6 +166,73 @@
             {{ $data->appends(['data' => $data->currentPage(), 'product' => $product->currentPage()])->links() }}
         </div>
     </div>
+    <!-- urgent case end -->
+
+    <!-- normal case -->
+    <div class="row align-items-center">
+        <div class="col">
+            <div class="mt-5">
+                <h4 class="card-title float-left mt-2">Normal Case</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table">
+                <div class="card-body booking_card">
+                    <div class="table-responsive">
+                        <table class="datatable table table-stripped table table-hover table-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Booking Type</th>
+                                    <th>Phone Number</th>
+                                    <th>Vehicle Number</th>
+                                    <th>Message</th>
+                                    <th>Status</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($daall as $normBooking)
+                                <tr>
+                                    <td>{{$normBooking->name}}</td>
+                                    <td>{{$normBooking->email}}</td>
+                                    <td id="bookingtype">{{$normBooking->type}}</td>
+                                    <td>{{$normBooking->phone}}</td>
+                                    <td>{{$normBooking->vehicle}}</td>
+                                    <td>{{$normBooking->textarea}}</td>
+                                    <td>
+                                        <div class="actions">
+                                            <a id="adata" href="#" class="btn btn-sm bg-success-light mr-2">{{$normBooking->status}}</a>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v ellipse_color"></i>
+                                            </a>
+                                            <form method="post" action="{{ url('booking/delete/'.$normBooking->id) }}">
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="{{ url('booking/edit-booking/'.$normBooking->id) }}">
+                                                        <i class="fas fa-pencil-alt m-r-5"></i> Edit </a>
+                                                    @csrf
+                                                    <button class="dropdown-item" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- normal case end -->
 
     <div class="row">
         <div class="col-sm-12">

@@ -22,11 +22,17 @@ class ProductController extends Controller
 
     public function AddNewProduct(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'model' => 'required',
+            'manufacturing' => 'required',
+            'for' => 'required',
+        ]);
         $product = new Products;
         $product->name = $request->name;
-        $product->car_model = $request->car_model;
-        $product->car_year = $request->car_year;
-        $product->pfor = $request->pfor;
+        $product->model = $request->model;
+        $product->manufacturing = $request->manufacturing;
+        $product->for = $request->for;
         $product->u_id = Auth::user()->id;
 
         if ($product->save()) {
@@ -44,6 +50,12 @@ class ProductController extends Controller
 
     public function UpdateProduct(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'model' => 'required',
+            'manufacturing' => 'required',
+            'for' => 'required',
+        ]);
         $product = Products::findOrfail($id);
         $product->name = $request->name;
         $product->car_model = $request->car_model;

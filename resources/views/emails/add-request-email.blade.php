@@ -106,26 +106,31 @@
 
 <body>
     <table>
-        <caption>Congratulation, Your booking is successful. 😁</caption>
+        <caption>Congratulation, Your request is successful. 😁</caption>
         <thead>
             <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Phone Number</th>
-                <th scope="col">Vehicle Number</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product for</th>
+                <th scope="col">Vehicle Model</th>
+                <th scope="col">Vehicle Manufacturing Year</th>
                 <th scope="col">Message</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>{{ucfirst($data->name)}}</td>
-                <td>{{$data->email}}</td>
-                <td>{{$data->phone}}</td>
-                <td>{{$data->vehicle}}</td>
-                <td>{{$data->textarea}}</td>
+                <td>{{ucfirst($request->name)}}</td>
+                <td>{{$request->for}}</td>
+                <td>{{$request->model}}</td>
+                <td>{{$request->manufacturing}}</td>
+                <td>{{$request->textarea}}</td>
             </tr>
         </tbody>
-    </table>>
+    </table>
+    <div class="extra-info">
+        <p class="paragraph-text">If you want to cancel the booking then please do delete your booking from the
+            Dashboard or Add Booking
+        </p>
+    </div>
     <h5>Thanks,<br>
         {{ config('app.name') }}
     </h5>

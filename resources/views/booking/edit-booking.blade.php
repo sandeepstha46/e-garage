@@ -3,6 +3,13 @@
 
 <div class="content container-fluid">
     <div class="page-header">
+        @if (count($errors) > 0)
+        <div id="mess-age">
+            @foreach ($errors->all() as $error)
+            <p class="alert alert-danger">⚠️{{ $error }}
+                @endforeach</p>
+        </div>
+        @endif
         <div class="row align-items-center">
             <div class="col">
                 <h3 class="page-title mt-5">Edit Booking</h3>

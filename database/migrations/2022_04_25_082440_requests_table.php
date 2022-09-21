@@ -16,9 +16,9 @@ class RequestsTable extends Migration
         Schema::create('requests', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('p_for');
-            $table->string('v_model');
-            $table->date('v_year');
+            $table->string('for');
+            $table->string('model');
+            $table->date('manufacturing');
             $table->string('textarea')->nullable();
             $table->boolean('status')->default(1);
             $table->integer('u_id')->unsigned();

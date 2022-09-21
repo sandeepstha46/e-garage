@@ -42,9 +42,9 @@
                                 @foreach($data as $product)
                                 <tr>
                                     <td>{{$product->name}}</td>
-                                    <td>{{$product->pfor}}</td>
-                                    <td>{{$product->car_model}}</td>
-                                    <td>{{$product->car_year}}</td>
+                                    <td>{{$product->for}}</td>
+                                    <td>{{$product->model}}</td>
+                                    <td>{{$product->manufacturing}}</td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

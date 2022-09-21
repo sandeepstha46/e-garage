@@ -47,9 +47,9 @@
                                 @foreach($data as $requests)
                                 <tr>
                                     <td>{{$requests->name}}</td>
-                                    <td>{{$requests->p_for}}</td>
-                                    <td>{{$requests->v_model}}</td>
-                                    <td>{{$requests->v_year}}</td>
+                                    <td>{{$requests->for}}</td>
+                                    <td>{{$requests->model}}</td>
+                                    <td>{{$requests->manufacturing}}</td>
                                     <td>{{$requests->textarea}}</td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">

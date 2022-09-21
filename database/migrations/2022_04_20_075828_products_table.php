@@ -16,9 +16,9 @@ class ProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('car_model');
-            $table->integer('car_year');
-            $table->string('pfor');
+            $table->string('model');
+            $table->date('manufacturing');
+            $table->string('for');
             $table->boolean('status')->default(1);
             $table->integer('u_id')->unsigned();
             $table->foreign('u_id')->references('id')->on('users');

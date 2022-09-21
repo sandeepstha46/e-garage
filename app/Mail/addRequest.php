@@ -2,14 +2,14 @@
 
 namespace App\Mail;
 
-use App\Models\Bookings;
+use App\Models\Requests;
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Queue\SerializesModels;
 
-class updateBooking extends Mailable
+class addRequest extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,9 +28,9 @@ class updateBooking extends Mailable
      *
      * @return $this
      */
-    public function build(Bookings $booking)
+    public function build(Requests $data)
     {
-        $dataItem = Bookings::where('rank', '>', 0)->where('u_id', Auth::user()->id)->first();
-        return $this->view('emails.update-booking', compact('dataItem'));
+        $request = Requests::where('status', '>', 0)->where('u_id', Auth::user()->id)->first();
+        return $this->view('emails.add-request-email', compact('request'));
     }
 }

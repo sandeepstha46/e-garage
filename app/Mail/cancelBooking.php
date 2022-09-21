@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Auth;
 
 class cancelBooking extends Mailable
 {
@@ -29,7 +30,7 @@ class cancelBooking extends Mailable
      */
     public function build(Bookings $data)
     {
-        $namebooking = Bookings::where('rank', '>', 0)->first();
-        return $this->view('emails.cancel-booking',compact('namebooking'));
+        $namebooking = Bookings::where('rank', 0)->where('u_id', Auth::user()->id)->first();
+        return $this->view('emails.cancel-booking', compact('namebooking'));
     }
 }

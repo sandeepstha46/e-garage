@@ -107,7 +107,7 @@
         <svg class="progress" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 4.5">
             <rect height="4.5" width="100" rx="2" ry="2" />
         </svg>
-        <p class="message"><b>{{$dataItem->name}}</b>, Your booking is now updated to <b>{{$dataItem->status}}</b> Successfully.</p>
+        Your booking is now updated Successfully.</p>
         <hr>
         <p class="points">Thank you for using {{ config('app.name') }} services.</p>
 

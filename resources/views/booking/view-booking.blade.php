@@ -3,7 +3,7 @@
 
 <div class="content container-fluid">
     <div class="page-header">
-        @if (session('error'))
+        @if (session('errors'))
         <div id="mess-age">
             <p class="alert alert-danger">{{ session('errors') }}</p>
         </div>

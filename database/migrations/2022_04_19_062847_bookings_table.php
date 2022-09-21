@@ -24,6 +24,7 @@ class BookingsTable extends Migration
             $table->boolean('rank')->default("1");
             $table->boolean('urgent')->default("0")->nullable();
             $table->string('textarea')->nullable();
+            $table->string('price')->default("250");
             $table->integer('u_id')->unsigned();
             $table->foreign('u_id')->references('id')->on('users');
             $table->timestamps();

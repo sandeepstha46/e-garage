@@ -26,8 +26,10 @@ class BookingSeeder extends Seeder
                 'type' => $booking['type'],
                 'phone' => $booking['phone'],
                 'vehicle' => $booking['vehicle'],
-                "textarea" => $booking['textarea'],
-                "u_id" => $booking['u_id'],
+                'rank' => $booking['rank'],
+                'urgent' => $booking['urgent'],
+                'textarea' => $booking['textarea'],
+                'u_id' => $booking['u_id'],
             ]);
         }
     }

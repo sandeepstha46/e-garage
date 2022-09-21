@@ -35,14 +35,42 @@ class BookingController extends Controller
 
     public function AddNewBooking(Request $request)
     {
-        if (Bookings::count() < 10) {
+        $urgentBooking = Bookings::all()->where('urgent', '>', 0);
+        $allBooking = Bookings::all();
+        $booking = new Bookings;
+
+        if ($allBooking->count() < 10) {
+            if ($urgentBooking->count() < 5) {
+                $request->validate([
+                    'type' => 'required',
+                    'phone' => 'required|min:10|max:14',
+                    'vehicle' => 'required|regex: /([A-Z]\w{1,2}\W{1})+([0-9]\w{1,2}\W{1})+([A-Z]\w{2}\W{1})+([0-9]\w{3})/i',
+                ]);
+
+                $booking->name = Auth::user()->name;
+                $booking->email = Auth::user()->email;
+                $booking->type = $request->type;
+                $booking->phone = $request->phone;
+                $booking->vehicle = $request->vehicle;
+                $booking->urgent = $request->urgent;
+                $booking->textarea = $request->textarea;
+                $booking->u_id = Auth::user()->id;
+
+                if ($booking->save()) {
+                    Mail::to($booking->email)->send(new bookingsMail($booking));
+                    return redirect('booking/view')->with('success', 'New Booking Added Successfully');
+                } else {
+                    return redirect('booking/view')->with('errors', ' Sorry Some Error Occurred');
+                }
+            } else {
+                return redirect('booking/view')->with('errors', 'Daily Urgent Limit Exceeded');
+            }
             $request->validate([
                 'type' => 'required',
                 'phone' => 'required|min:10|max:14',
                 'vehicle' => 'required|regex: /([A-Z]\w{1,2}\W{1})+([0-9]\w{1,2}\W{1})+([A-Z]\w{2}\W{1})+([0-9]\w{3})/i',
             ]);
 
-            $booking = new Bookings;
             $booking->name = Auth::user()->name;
             $booking->email = Auth::user()->email;
             $booking->type = $request->type;
@@ -59,8 +87,66 @@ class BookingController extends Controller
                 return redirect('booking/view')->with('errors', ' Sorry Some Error Occurred');
             }
         } else {
-            return redirect('booking/view')->with('errors', ' Sorry! Daily urgent limit exceeded');
+            return redirect('booking/view')->with('errors', 'Daily Booking Limit Exceeded');
         }
+
+
+
+
+
+
+
+
+        // $urgentbooking = Bookings::all()->where('urgent', '>', 0);
+        // $allbooking = Bookings::all();
+        // dd($allbooking->count());
+        // if ($urgentbooking->count() < 5) {
+        //     $request->validate([
+        //         'type' => 'required',
+        //         'phone' => 'required|min:10|max:14',
+        //         'vehicle' => 'required|regex: /([A-Z]\w{1,2}\W{1})+([0-9]\w{1,2}\W{1})+([A-Z]\w{2}\W{1})+([0-9]\w{3})/i',
+        //     ]);
+
+        //     $booking->name = Auth::user()->name;
+        //     $booking->email = Auth::user()->email;
+        //     $booking->type = $request->type;
+        //     $booking->phone = $request->phone;
+        //     $booking->vehicle = $request->vehicle;
+        //     $booking->urgent = $request->urgent;
+        //     $booking->textarea = $request->textarea;
+        //     $booking->u_id = Auth::user()->id;
+
+        //     if ($booking->save()) {
+        //         Mail::to($booking->email)->send(new bookingsMail($booking));
+        //         return redirect('booking/view')->with('success', 'New Booking Added Successfully');
+        //     } else {
+        //         return redirect('booking/view')->with('errors', ' Sorry Some Error Occurred');
+        //     }
+        // } elseif ($urgentbooking->count() < 10) {
+        //     $request->validate([
+        //         'type' => 'required',
+        //         'phone' => 'required|min:10|max:14',
+        //         'vehicle' => 'required|regex: /([A-Z]\w{1,2}\W{1})+([0-9]\w{1,2}\W{1})+([A-Z]\w{2}\W{1})+([0-9]\w{3})/i',
+        //     ]);
+
+        //     $booking->name = Auth::user()->name;
+        //     $booking->email = Auth::user()->email;
+        //     $booking->type = $request->type;
+        //     $booking->phone = $request->phone;
+        //     $booking->vehicle = $request->vehicle;
+        //     $booking->urgent = $request->urgent;
+        //     $booking->textarea = $request->textarea;
+        //     $booking->u_id = Auth::user()->id;
+
+        //     if ($booking->save()) {
+        //         Mail::to($booking->email)->send(new bookingsMail($booking));
+        //         return redirect('booking/view')->with('success', 'New Booking Added Successfully');
+        //     } else {
+        //         return redirect('booking/view')->with('errors', ' Sorry Some Error Occurred');
+        //     }
+        // } else {
+        //     return redirect('booking/view')->with('errors', ' Sorry! Daily limit exceeded');
+        // }
     }
 
     public function EditBooking($id)

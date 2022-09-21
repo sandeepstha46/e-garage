@@ -9,7 +9,7 @@ class BookingsTable extends Migration
     /**
      * Run the migrations.
      *
-     * @return void
+     * @return voids
      */
     public function up()
     {
@@ -22,7 +22,7 @@ class BookingsTable extends Migration
             $table->string('phone');
             $table->string('vehicle');
             $table->boolean('rank')->default("1");
-            $table->boolean('urgent')->default("0");
+            $table->boolean('urgent')->default("0")->nullable();
             $table->string('textarea')->nullable();
             $table->integer('u_id')->unsigned();
             $table->foreign('u_id')->references('id')->on('users');

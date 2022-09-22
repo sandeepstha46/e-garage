@@ -18,11 +18,11 @@ class BookingController extends Controller
     {
         // get all bookings for admin
         if (Auth::user()->utype === 'ADM') {
-            $data = Bookings::orderBy('id', 'desc')->where('rank', '>', 0)->paginate(5);
+            $data = Bookings::orderBy('id', 'desc')->where('rank', '>', 0)->paginate(12);
             return view('booking.view-booking', compact('data'));
         } else {
             //fetched bookings of those user who booked it.
-            $data = Bookings::orderBy('id', 'desc')->whereUId(Auth::id())->where('rank', '>', 0)->paginate(5);
+            $data = Bookings::orderBy('id', 'desc')->whereUId(Auth::id())->where('rank', '>', 0)->paginate(12);
             return view('booking.view-booking', compact('data'));
         }
     }
@@ -38,7 +38,92 @@ class BookingController extends Controller
         $urgentBooking = Bookings::all()->where('rank', '>', 0)->where('urgent', '>', 0);
         $priceBooking = Bookings::all()->where('rank', '>', 0)->where('price', '=', '250');
         $allBooking = Bookings::all()->where('rank', '>', 0);
+        $isUrgent = request('urgent');
         $booking = new Bookings;
+
+        // if booking is greater then 10
+        if ($allBooking->count() > 10) {
+            // return daily limit
+            return redirect('booking/view')->with('errors', 'Daily Limit Exceeded');
+        }
+        // if booking is less then 10
+        elseif ($allBooking->count() < 10) {
+            // if booking is less then 10 and if its urgent
+            if ($isUrgent == true) {
+                // if booking is less then 10, case is urgent and total urgent is less then 5
+                if ($urgentBooking->count() < 3) {
+                    $request->validate([
+                        'type' => 'required',
+                        'phone' => 'required|min:10|max:14',
+                        'vehicle' => 'required|regex: /([A-Z]\w{1,2}\W{1})+([0-9]\w{1,2}\W{1})+([A-Z]\w{2}\W{1})+([0-9]\w{3})/i',
+                    ]);
+                    $booking->name = Auth::user()->name;
+                    $booking->email = Auth::user()->email;
+                    $booking->type = $request->type;
+                    $booking->phone = $request->phone;
+                    $booking->vehicle = $request->vehicle;
+                    $booking->urgent = $request->urgent;
+                    $booking->textarea = $request->textarea;
+                    $booking->price = 250;
+                    $booking->u_id = Auth::user()->id;
+                    if ($booking->save()) {
+                        // Mail::to($booking->email)->send(new updateBooking($booking));
+                        return redirect('booking/view')->with('success', 'Booking Added Successfully');
+                    }
+                }
+                // if booking is less then 10, case is urgent and case is greater then 5 
+                else {
+                    return redirect('booking/view')->with('errors', 'Daily Urgent Limit Exceeded');
+                }
+            }
+            // if booking is less then 10 and is not urgent 
+            else {
+                // if booking is less then 10 , case is not urgent but total booking is greater then 5
+                if ($allBooking->count() < 5) {
+                    $request->validate([
+                        'type' => 'required',
+                        'phone' => 'required|min:10|max:14',
+                        'vehicle' => 'required|regex: /([A-Z]\w{1,2}\W{1})+([0-9]\w{1,2}\W{1})+([A-Z]\w{2}\W{1})+([0-9]\w{3})/i',
+                    ]);
+                    $booking->name = Auth::user()->name;
+                    $booking->email = Auth::user()->email;
+                    $booking->type = $request->type;
+                    $booking->phone = $request->phone;
+                    $booking->vehicle = $request->vehicle;
+                    $booking->urgent = $request->urgent;
+                    $booking->textarea = $request->textarea;
+                    $booking->price = 250;
+                    $booking->u_id = Auth::user()->id;
+                    if ($booking->save()) {
+                        // Mail::to($booking->email)->send(new updateBooking($booking));
+                        return redirect('booking/view')->with('success', 'Booking Added Successfully');
+                    }
+                }
+                // if booking is less then 10, case is not urgent but total booking is less then 5
+                else {
+                    $request->validate([
+                        'type' => 'required',
+                        'phone' => 'required|min:10|max:14',
+                        'vehicle' => 'required|regex: /([A-Z]\w{1,2}\W{1})+([0-9]\w{1,2}\W{1})+([A-Z]\w{2}\W{1})+([0-9]\w{3})/i',
+                    ]);
+                    $booking->name = Auth::user()->name;
+                    $booking->email = Auth::user()->email;
+                    $booking->type = $request->type;
+                    $booking->phone = $request->phone;
+                    $booking->vehicle = $request->vehicle;
+                    $booking->urgent = $request->urgent;
+                    $booking->textarea = $request->textarea;
+                    $booking->price = 350;
+                    $booking->u_id = Auth::user()->id;
+                    if ($booking->save()) {
+                        // Mail::to($booking->email)->send(new updateBooking($booking));
+                        return redirect('booking/view')->with('success', 'Booking Added Successfully');
+                    }
+                }
+            }
+        } else {
+            return redirect('booking/view')->with('errors', 'There is some issues.');
+        }
     }
 
     public function EditBooking($id)

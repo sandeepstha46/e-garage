@@ -25,7 +25,6 @@
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Password</th>
                                     <th>Profile Image</th>
                                     <th class="text-right">Actions</th>
                                 </tr>
@@ -36,7 +35,6 @@
                                     <td>{{ $user -> id }}</td>
                                     <td>{{ $user -> name }}</td>
                                     <td>{{ $user -> email }}</td>
-                                    <td>{{ $user -> password }}</td>
                                     <td><img class="rounded-circle" alt="User Image" src="{{ (!empty($user->profile_photo_path))? url('images/upload_images/user_images/'.$user->profile_photo_path): url('images/upload_images/no_avatar.png') }}" width="40"></td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
